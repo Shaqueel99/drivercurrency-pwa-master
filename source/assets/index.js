@@ -200,14 +200,16 @@ const timer={
         return [h,m,s];
     },
     "stop": function(){
-        view.ended()
+        view.ended();
         var endTime = currentTime;
-        document.getElementById('endTime').innerHTML = timePrintLayout(endTime).join(':')
-        localStorage.removeItem("timerStartTime")
-        localStorage.removeItem("timerNight")
-        speedometer.stop()
-    },
-    "save": function(){
+        currentTime =  document.getElementById('endTime').innerHTML;
+        document.getElementById('endTime').innerHTML = timePrintLayout(endTime).join(':');
+        localStorage.removeItem("timerStartTime");
+        localStorage.removeItem("timerNight");
+
+
+
+
         var endContainer = document.getElementById('endContainer')
         if(localStorage.getItem("drivingLog") != null){
             var log = JSON.parse(localStorage.getItem("drivingLog"))
@@ -222,11 +224,14 @@ const timer={
         thisTrip.date= (new Date).toString()
         thisTrip.ms= currentMS;
         log.push(thisTrip)
-        var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
         localStorage.setItem('drivingLog', JSON.stringify(log))
+    },
+    "save": function(){
+     
+        var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
         snackbar.labelText = "Your drive was saved."
-        snackbar.open()
-        view.home()
+        snackbar.open();
+        view.home();
     }
 }
 function printLog(){
