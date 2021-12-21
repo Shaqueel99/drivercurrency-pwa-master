@@ -1,0 +1,32 @@
+{
+  "name": "drivercurrency-pwa",
+  "version": "1.0.1",
+  "description": "Progressive Web App.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ./source -a localhost -p 8000  -c-1 "
+  },
+  "keywords": [
+    "html",
+    "pwa",
+    "simple",
+    "webapp"
+  ],
+ 
+  "contributors": [],
+ 
+  "repository": {
+    "type": "git"
+  
+  },
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material/select": "^13.0.0",
+    "express": "^4.17.1",
+    "http-server": "^14.0.0",
+    "mdb-ui-kit": "^3.10.1",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}
