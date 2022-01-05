@@ -1,0 +1,557 @@
+<html lang="en">
+  <script type="text/javascript" src="assets/index.js"></script>
+   <link rel="stylesheet" href="./output.css" >
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="Content-Security-Policy" content="frame-src https://form.gov.sg https://form.gov.sg/* https://havenofexcellence.github.io https://havenofexcellence.github.io/*; default-src 'self' http://192.168.86.23:8080/ http://192.168.86.23:8080/* https://form.gov.sg https://form.gov.sg/ https://form.gov.sg/* ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com https://form.gov.sg https://form.gov.sg/*; child-src https://form.gov.sg https://form.gov.sg/* 'self'; img-src * 'self' data: https: http:; ">
+      <title>MT-RAC+</title>
+      <!--[if IE]>
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <![endif]-->
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="apple-touch-icon" href="icons-4/apple-icon-180.png">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+      <link rel="apple-touch-startup-image" href="ios-splash-3/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+      <link href="/js/admin.ab7433c9.js" rel="prefetch">
+      <link href="/js/chunk-2d0c96eb.9a8d8841.js" rel="prefetch">
+      <link href="/js/chunk-2d0ced25.b72e4356.js" rel="prefetch">
+      <link href="/js/chunk-2d0dae65.b8337868.js" rel="prefetch">
+      <link href="/js/chunk-82000646.83a0de12.js" rel="prefetch">
+      <link href="/js/flags.5ba48bbc.js" rel="prefetch">
+      <link href="/js/forgot-password.e0300b08.js" rel="prefetch">
+      <link href="/js/guide.2eea161c.js" rel="prefetch">
+      <link href="/js/hub.020147f5.js" rel="prefetch">
+      <link href="/js/login.ea0c017e.js" rel="prefetch">
+      <link href="/js/profile-admin.28b90f8a.js" rel="prefetch">
+      <link href="/js/profile-edit.7b80a85c.js" rel="prefetch">
+      <link href="/js/profile-password.34039a37.js" rel="prefetch">
+      <link href="/js/profile.ce7d2a7a.js" rel="prefetch">
+      <link href="/js/question.dd4133fb.js" rel="prefetch">
+      <link href="/js/quiz.93d9ea05.js" rel="prefetch">
+      <link href="/js/signup.68ba1ab1.js" rel="prefetch">
+      <link href="/js/vcom-package.8687a2dd.js" rel="prefetch">
+      <link href="/css/app.d1dce0bb.css" rel="preload" as="style">
+      <link href="/js/app.20ae5d69.js" rel="preload" as="script">
+      <link href="/js/chunk-vendors.f2f20f68.js" rel="preload" as="script">
+      <link href="/css/app.d1dce0bb.css" rel="stylesheet">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+      <link rel="manifest" href="/manifest.json">
+      <meta name="theme-color" content="#ffffff">
+      <meta name="apple-mobile-web-app-capable" content="default">
+      <meta name="apple-mobile-web-app-status-bar-style" content="default">
+      <meta name="apple-mobile-web-app-title" content="MT-RAC+">
+      <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon-152x152.png">
+      <link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#ffffff">
+      <meta name="msapplication-TileImage" content="/img/icons/msapplication-icon-144x144.png">
+      <meta name="msapplication-TileColor" content="#ffffff">
+   </head>
+   <body>
+      <noscript><strong>We're sorry but MT-RAC+ doesn't work without JavaScript enabled. Please enable it and reload to continue.</strong></noscript>
+      <div id="app" data-v-app="">
+         <!---->
+         <div class="space sticky top-0 bg-white bg-opacity-80 backdrop-filter backdrop-blur">
+            <header class="flex items-center justify-between">
+               <a href="/" class="font-semibold ghost"><span>MT-RAC+</span></a>
+               <ul class="flex items-center justify-between">
+                  <!---->
+                  <li><a href="/admin" class="text-gray-600 ghost"> Admin </a></li>
+                  <div class="mr-base"></div>
+                  <li>
+                     <a href="/me" class="inline-flex items-center text-gray-600 ghost">
+                        <span>User Account</span><span class="ml-sm font-mono text-sm mr-1">3.7</span>
+                        <svg class="fill-current w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                           <path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                        </svg>
+                     </a>
+                  </li>
+               </ul>
+            </header>
+         </div>
+         <section class="space py-0 flex justify-end text-sm text-gray-600"><a href="/guide" class="ghost">Guide</a><a href="/app-feedback" class="ml-base ghost">Feedback</a><a href="/guide/no-go" class="ml-base ghost">No-Go Criteria</a></section>
+         <main class="min-h-3/4 mx-auto mt-md mb-xl space">
+            <div>
+               <div>
+                  <!---->
+               </div>
+               <a href="/" class="inline-flex items-center text-gray-500 ghost">
+                  <svg class="w-4 h-3 -ml-1 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                     <path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                  </svg>
+                  <span class="font-semibold ml-base">Home</span>
+               </a>
+               <h1><span>Create an MT-RAC</span></h1>
+               <form>
+                  <ul class=" space-y-md">
+                     <!----><!----><!----><!---->
+                     <div class="my-base space-y-base">
+                        <div class="bg-gray-100 rounded animate-pulse"></div>
+                     </div>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="hubId">Hub</label>
+                        <select id="hubId" disabled="" class="form-field undefined" name="hubId">
+                           <option></option>
+                           <option value="1ce54ff6-a078-4042-8d9e-0774731e6fb2">1TPT</option>
+                           <option value="db886fca-16c7-4c36-b2a0-8fbcffeb87ee">3TPT</option>
+                           <option value="4fea7bdb-ca41-4f4b-9d5d-d654209672d0">ALTI</option>
+                           <option value="ddee2a05-6280-4f9f-a71d-d96db14a864b">East</option>
+                           <option value="aa9326c7-90d6-49dd-8f7d-d91fd5d58bf3">OTC</option>
+                           <option value="3cf8cb1c-6017-435b-a672-1a5efc052895">Others</option>
+                           <option value="71998e49-5ef7-4b32-b162-e2476445a6b8">RSAF</option>
+                           <option value="310b0414-9d79-4af2-b7f2-5a5de2cb3aea">STS</option>
+                           <option value="dbd2985e-bff7-4203-aa84-e68dc4c413f4">West</option>
+                           <option value="b871f1bf-8f34-470e-94d3-b496c63943be">XWB</option>
+                        </select>
+                        <!----><!----><!----><span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="nodeId">Node</label>
+                        <select id="nodeId" disabled="" class="form-field undefined" name="nodeId">
+                           <option></option>
+                           <option value="0c4e3afa-2965-4ff1-a482-79ae833ac580">CTN</option>
+                           <option value="19b974f8-daec-43ae-a480-89eda5767684">ATC</option>
+                           <option value="6b1050cd-0f30-47e6-9638-15aa7ea07163">CLN</option>
+                           <option value="9cb469c4-2499-4eab-96ff-c97291cd509e">TTN</option>
+                           <option value="a0245707-59d5-4492-b4f4-950f866efd13">HQ</option>
+                           <option value="c4466249-c275-4ed9-a966-a3b646e47650">STC</option>
+                           <option value="d76f33ee-2948-483b-a301-df453f52aa5e">LVC</option>
+                        </select>
+                        <!----><!----><!----><span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <button type="button" class="button button-small"> Edit hub or node </button>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="vehicleNo">Vehicle number</label><!----><input id="vehicleNo" type="number" autocomplete="vehicleNo" inputmode="numeric" class="form-field undefined" name="vehicleNo"><!----><!----><span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="detailId">Detail ID</label><!----><input id="detailId" type="text" autocomplete="detailId" inputmode="text" class="form-field undefined" name="detailId"><!---->
+                        <div class="mt-xs text-sm">Entering the detail ID is optional</div>
+                        <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="aviDate">Next AVI date</label><!----><input id="aviDate" type="date" autocomplete="aviDate" inputmode="text" class="form-field undefined" name="aviDate"><!----><!----><span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="journeyFrom">Journey from</label><!----><input id="journeyFrom" type="text" autocomplete="journeyFrom" inputmode="text" class="form-field undefined" name="journeyFrom"><!---->
+                        <div class="mt-xs text-sm">Use abbreviations instead of writing the full name</div>
+                        <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <li>
+                        <label class="block mb-sm font-semibold" for="journeyTo">Journey to</label><!----><input id="journeyTo" type="text" autocomplete="journeyTo" inputmode="text" class="form-field undefined" name="journeyTo"><!---->
+                        <div class="mt-xs text-sm">Use abbreviations instead of writing the full name</div>
+                        <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                     </li>
+                     <!----><!---->
+                     <h2 class="form-section-title">Risks</h2>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Experience</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="experience">
+                                 <div class=" undefined">Cat A or B</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="experience">
+                                 <div class=" undefined">Cat C</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="HIGH" name="experience">
+                                 <div class=" undefined">Cat D</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NO_MOVE" name="experience">
+                                 <div class=" undefined">Not trained in vehicle, or JIT not done if applicable</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Vehicle type</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="vehicleType">
+                                 <div class=" undefined">Operated the same vehicle in the past 10 days / Class 3 / 200CC</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="vehicleType">
+                                 <div class=" undefined">Class 4 and above / 800CC</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Fatigue</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="fatigue">
+                                 <div class=" undefined">More than 7 hours</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="fatigue">
+                                 <div class=" undefined">Less than 7 hours (in camp or home)</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="HIGH" name="fatigue">
+                                 <div class=" undefined">Less than 7 hours (field)</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NO_MOVE" name="fatigue">
+                                 <div class=" undefined">Less than 4 hours (field)</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Health</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="health">
+                                 <div class=" undefined">Good</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="health">
+                                 <div class=" undefined">Fair - just recovered from illness</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NO_MOVE" name="health">
+                                 <div class=" undefined">Poor - ill or still under medication that caused drowsiness</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Weather</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="weather">
+                                 <div class=" undefined">Dry</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="weather">
+                                 <div class=" undefined">Wet</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="HIGH" name="weather">
+                                 <div class=" undefined">Heavy rain</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Route familiarity</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="familiarity">
+                                 <div class=" undefined">Familiar</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="HIGH" name="familiarity">
+                                 <div class=" undefined">Unfamiliar even after route brief done</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NO_MOVE" name="familiarity">
+                                 <div class=" undefined">Unfamiliar as route brief not done</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Mission</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="mission">
+                                 <div class=" undefined">Admin</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="mission">
+                                 <div class=" undefined">Training or operations (including towing)</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="HIGH" name="mission">
+                                 <div class=" undefined">Administrative towing</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">No vehicle commander</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="noVcom">
+                                 <div class=" undefined">Cat A/B</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="MEDIUM" name="noVcom">
+                                 <div class=" undefined">Cat C</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NO_MOVE" name="noVcom">
+                                 <div class=" undefined">Cat D</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NA" name="noVcom">
+                                 <div class=" undefined">Vehicle commander present</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Fault severity (vehicle serviceability)</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="LOW" name="vehicleServiceability">
+                                 <div class=" undefined">No fault</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="HIGH" name="vehicleServiceability">
+                                 <div class=" undefined">Minor fault</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded-full 
+                                    false 
+                                    undefined
+                                    " type="radio" value="NO_MOVE" name="vehicleServiceability">
+                                 <div class=" undefined">Major fault</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <div class="alert alert-info"><span> The overall risk is low</span></div>
+                     <h2 class="form-section-title">Checklist</h2>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap">Driving permit holder</label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="noMove" name="driverChecklist">
+                                 <div class=" undefined">Ensure no admin movement during No-Move timings (0730H-0930H &amp; 1730H-1930H)</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="licensed" name="driverChecklist">
+                                 <div class=" undefined">The transport operator is licensed to operate the vehicle and has displayed Military permit on dashboard</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="seatBelts" name="driverChecklist">
+                                 <div class=" undefined">Brief and ensure troops secure their seat belts before movement of vehicle</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="noSleepingSmoking" name="driverChecklist">
+                                 <div class=" undefined">Brief on no sleeping or smoking on the vehicle before movement</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="secureLoad" name="driverChecklist">
+                                 <div class=" undefined">Secure load before movement of vehicle</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="safetyStraps" name="driverChecklist">
+                                 <div class=" undefined">Check and ensure safety straps in place and tailboard of vehicle is closed</div>
+                              </label>
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="inCaseAccident" name="driverChecklist">
+                                 <div class=" undefined">If involved in an accident, to contact parent unit, Transport Node, and Police</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <h2 class="form-section-title">Standing order</h2>
+                     <details class="space-y-xs">
+                        <summary class="font-bold">Click here to view the standing order</summary>
+                        <ul class="unordered-list">
+                           <li>To be responsible for the discipline and safety of all passengers/crew in the assigned transport details.</li>
+                           <li>To assist to look out for obstruction, hazard or danger. If the driver is reversing, there is no requirement for the VC to dismount to guide the driver. However, VC should render assistance to the driver when requested.</li>
+                           <li>Go through the intended route with the driver.</li>
+                           <li>If unsure of the route or lost, to instruct the driver to to stop the vehicle at a safe place to re-orientate or seek further instructions.</li>
+                           <li>If involved in an accident, to inform unit about the accident and assist the driver manage the accident</li>
+                           <li>To check and endorse the MT-Risk Assessment Checklist (RAC)</li>
+                        </ul>
+                     </details>
+                     <li>
+                        <label class="block font-semibold whitespace-pre-wrap"></label>
+                        <div>
+                           <!---->
+                           <div class="undefined">
+                              <label class="flex items-center rounded p-xs hover:bg-indigo-100">
+                                 <input class="mr-base border-gray-300 bg-gray-50 rounded 
+                                    false 
+                                    undefined
+                                    " type="checkbox" value="true" name="standingOrder">
+                                 <div class=" undefined">I have read the MT-RAC standing orders</div>
+                              </label>
+                           </div>
+                           <span role="alert" class="block mt-xs text-red-500 font-medium"></span>
+                        </div>
+                     </li>
+                     <!----><!----><!---->
+                     <div class="flex justify-between py-md items center">
+                        <button type="submit" class="form-submit button button-primary"><span>Submit</span></button><!---->
+                     </div>
+                     <!----><!---->
+                  </ul>
+               </form>
+            </div>
+         </main>
+         <footer class="space flex items-center text-sm mb-xl text-gray-600"><a href="/v" class="text-gray-400 text-xs font-mono">v1.04.03</a></footer>
+      </div>
+      <script src="/js/chunk-vendors.f2f20f68.js"></script><script src="/js/app.20ae5d69.js"></script>
+   </body>
+</html>

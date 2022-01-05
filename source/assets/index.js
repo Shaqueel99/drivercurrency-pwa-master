@@ -42,6 +42,9 @@ const view = {
         homeContainer.classList.add('disappearing')
         startContainer.classList.add('appearing')
         startContainer.hidden=false
+      
+        document.getElementById("standardFa").hidden = false
+ 
         fabIcon.innerHTML='play_arrow'
         document.getElementById('share').hidden = true;
         document.getElementById('closeButton').hidden = false;
@@ -145,6 +148,7 @@ const view = {
         }
         standardFab.onclick = function(){
             view.start()
+           
         }
         fabIcon.innerHTML="timer"
         homeData()
@@ -448,7 +452,7 @@ function expandCard(element){
 function discardTimer(){
     let input = document.getElementById("kminput");
     let button = document.getElementById("standardFab");
-
+    document.getElementById("standardFa").hidden = true
     input.removeEventListener("change", stateHandle);
     button.style.opacity = "1"
     button.disabled = false;
