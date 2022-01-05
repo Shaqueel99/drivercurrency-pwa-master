@@ -13,8 +13,10 @@ $.ready(function(){
 $('#homeContainer').ready(function(){
     if(localStorage.getItem('setUp')== null){
         view.onboard()
+ 
     }else{
     homeData()
+ 
     }
     if(localStorage.getItem("timerStartTime")!= null){
         timeStarted = new Date(localStorage.getItem("timerStartTime"))
@@ -34,6 +36,7 @@ var currentMS;
 
 const view = {
     "start":function(arg){
+        console.log(localStorage)
         var timerContainer = document.getElementById('timerContainer')
         var startContainer = document.getElementById('startContainer')
         homeContainer.classList.add('disappearing')
@@ -102,6 +105,8 @@ const view = {
         document.getElementById('speedButton').hidden = true;
         standardFab.classList.remove('mdc-fab--exited')
         fabIcon.innerHTML="save"
+        
+
         standardFab.onclick=function(){
             timer.save()
         }
@@ -147,13 +152,19 @@ const view = {
     "onboard":function(){
         var homeContainer = document.getElementById('homeContainer')
         var onboardingContainer = document.getElementById('onboardingContainer')
+  
         homeContainer.hidden = true
         standardFab.classList.add('mdc-fab--exited')
         onboardingContainer.classList.add('appearing')
         onboardingContainer.hidden=false
         fabIcon.innerHTML="done"
+        
         loadStates()
         standardFab.onclick = function(){
+            document.getElementById("identity").innerHTML = document.getElementById("rank").value + " " +document.getElementById("name").value
+            localStorage.setItem("identity", document.getElementById("identity").innerHTML ) 
+      
+           
             finishSetup()
         }
     }
@@ -177,7 +188,7 @@ const timer={
         if(!continued){
             currentMS = 0;
             timeStarted= new Date;
-            localStorage.setItem('timerStartTime', timeStarted.toString());
+            localStorage.setItem('timerStartTime', timeStarted.toLocaleString());
             currentTime=[0,0,0]
         }
     },
@@ -201,13 +212,27 @@ const timer={
     },
     "stop": function(){
         view.ended();
+        let input = document.getElementById("kminput");
+let button = document.getElementById("standardFab");
+
+button.style.opacity = "0.5"
+  button.disabled = true;
+ 
+input.addEventListener("change", stateHandle);
+
+
+
+
+        timeEnded= new Date;
+        localStorage.setItem('timerEndTime', timeEnded.toLocaleString());
         var endTime = currentTime;
         currentTime =  document.getElementById('endTime').innerHTML;
         document.getElementById('endTime').innerHTML = timePrintLayout(endTime).join(':');
-        localStorage.removeItem("timerStartTime");
+        
         localStorage.removeItem("timerNight");
-
-
+        
+        document.getElementById('drivestart').innerHTML = localStorage.getItem('timerStartTime')
+        document.getElementById('driveend').innerHTML = localStorage.getItem('timerEndTime')
 
 
         var endContainer = document.getElementById('endContainer')
@@ -227,7 +252,29 @@ const timer={
         localStorage.setItem('drivingLog', JSON.stringify(log))
     },
     "save": function(){
-     
+  
+        if(localStorage.getItem("trips") != null){
+            var tripnum = parseInt(localStorage.getItem("trips"),10)
+           tripnum= +tripnum + +1
+           var realnum = tripnum
+            localStorage.setItem("trips",realnum)
+        }
+        else{
+            localStorage.setItem("trips",1)
+        }
+        if(localStorage.getItem("KM") != null){
+          
+          
+        }
+        else{
+            localStorage.setItem("KM",0)
+        }
+        var kmcalc = parseInt(localStorage.getItem("KM"),10)
+        var kminput = parseInt(document.getElementById('kminput').value,10)
+       kmcalc = +kmcalc + +kminput
+        var kmreal = kmcalc
+        localStorage.setItem("KM",kmreal)
+        console.log(localStorage)
         var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
         snackbar.labelText = "Your drive was saved."
         snackbar.open();
@@ -280,9 +327,46 @@ function getTotalTime(){
 }else{
     return [[0,0,0],[0,0,0]]
 }
+}function getTotalTrips(){
+    if(localStorage.getItem('trips') != null){
+    var totaltrips = localStorage.getItem('trips');
+   
+return[totaltrips]
+}
+else{
+   
+    var totaltrips = 0;
+   
+    return[totaltrips]
+}
+}
+function getTotalKM(){
+    if(localStorage.getItem('KM') != null){
+    var totalKM = localStorage.getItem('KM');
+   
+return[totalKM]
+}
+else{
+   
+    var totalKM = 0;
+   
+    return[totalKM]
+}
 }
 function homeData(){
+    let input = document.getElementById("kminput");
+    let button = document.getElementById("standardFab");
+
+    input.removeEventListener("change", stateHandle);
+    button.style.opacity = "1"
+    button.disabled = false;
+    var x = localStorage.getItem("identity")
+    document.getElementById("identity").innerHTML = x
     var allTime = getTotalTime()
+    var allTrips = getTotalTrips()
+    var allkm = getTotalKM()
+    document.getElementById('totalkm').innerHTML = allkm
+    document.getElementById('totaltrips').innerHTML = allTrips
     var hours = JSON.parse(localStorage.getItem('hours'))
     if(allTime[0][0] >= hours[0] && allTime[1][0] >= hours[1]){
         document.getElementById('welcome-text').innerHTML = "You've finished your hours!"
@@ -362,9 +446,21 @@ function expandCard(element){
 
 }
 function discardTimer(){
+    let input = document.getElementById("kminput");
+    let button = document.getElementById("standardFab");
+
+    input.removeEventListener("change", stateHandle);
+    button.style.opacity = "1"
+    button.disabled = false;
+    
+    
+   
+    
     if(!(document.getElementById("timerContainer").hidden))
     timer.stop()
     view.home()
+  
+ 
 }
 function manualSave(element, night){
     var saveObject= new Object;
@@ -600,5 +696,18 @@ function _generateSkillChips(){
         chipEl.innerHTML = '<div class="mdc-chip__ripple"></div> <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">'+skills[i].icon+'</i> <span class="mdc-chip__checkmark" > <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30"> <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59"/> </svg> </span> <span role="gridcell"> <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action"> <span class="mdc-chip__text">'+skills[i].name+'</span> </span> </span>'
         hazardChips.root.appendChild(chipEl);
         hazardChips.addChip(chipEl);
+    }
+}
+function stateHandle() {
+    let input = document.getElementById("kminput");
+    let button = document.getElementById("standardFab");
+
+    
+    if(document.getElementById("kminput").value === "") {
+        button.disabled = true;
+       
+    } else {
+        button.disabled = false;
+        button.style.opacity = "1"
     }
 }

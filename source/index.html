@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="drivepwa.webmanifest">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Driving Log">
@@ -29,7 +29,7 @@
           
           <button class="mdc-top-app-bar__navigation-icon mdc-icon-button material-icons" href="#">menu</button>
           <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" hidden id="closeButton" onclick="discardTimer()">close</button>
-          <a class="mdc-top-app-bar__title" href="index.html" target="_blank" style="color: inherit; font-size: 24px;">PTE Shaqeel </a>
+          <a class="mdc-top-app-bar__title" id="identity" href="index.html" target="_blank" style="color: inherit; font-size: 24px;">  </a>
    
        
        <!--<div class="mdc-menu mdc-menu-surface">
@@ -149,7 +149,7 @@
 <div class="mdc-card" ">
     <div class="mdc-card-content mdc-card__primary-action" onclick="expandCard(this.parentElement)">
     <h6><i class="material-icons  md-24">speed</i><br> Mileage</h6>
-    <h4><b>1</b><br
+    <h4 id="totalkm">1</h4>
       <h4>KM</h4>
     
    
@@ -159,7 +159,7 @@
 <div class="mdc-card" >
   <div class="mdc-card-content mdc-card__primary-action"  onclick="expandCard(this.parentElement)">
   <h6><i class="material-icons md-24">directions_car</i><br> Drives</h6>
-  <h4><b>1</b><br
+  <h4 id="totaltrips">1</h4>
    <h4>Trips</h4>
  
   </div>
@@ -220,7 +220,7 @@
     <span class="mdc-button__label"> MT-RAC</span>
   </a>
  <br><br><br>
- <button  class="mdc-button  mdc-button--raised mdc-button--leading" id="checkbutt2" >
+ <button  class="mdc-button  mdc-button--raised mdc-button--leading" id="checkbutt2" onclick="location.href='BOC.html'" >
   <span class="mdc-button__ripple"></span>
   <i class="material-icons mdc-button__icon" aria-hidden="true"
     hidden>check_circle</i
@@ -267,11 +267,13 @@
   <h1 class="time" id="endTime">00:00:00</h1><hr>
   <h5>Remember to do your post drive checks</h5>
   <div class="mdc-chip-set mdc-chip-set--filter" id="hazards" role="grid" hidden>
-</div><br>
-<span><h4>Drive Started: 1630</h4> </span><br><span><h4>Drive Ended: 1630 </h4></span> <br>
+</div><br><h4>Drive Started:</h4>
+<span id="drivestart"><h4>Drive Started: 1630</h4> </span><br><br>
+<h4>Drive Ended:</h4>
+<span id="driveend"><h4>Drive Ended: 1630 </h4></span> <br><br>
 <label class="mdc-text-field mdc-text-field--outlined" id="timeComment">
 
-  <input type="text" class="mdc-text-field__input">
+  <input type="number" class="mdc-text-field__input" id="kminput" >
   <span class="mdc-notched-outline">
     <span class="mdc-notched-outline__leading"></span>
     <span class="mdc-notched-outline__notch">
@@ -280,6 +282,7 @@
     <span class="mdc-notched-outline__trailing"></span>
   </span>
 </label>
+
 <p class="text-muted">Press <i class="material-icons align-bottom">save</i> to save, or <i class="material-icons align-bottom">close</i> to discard</p>
 </div>
 </div>
@@ -294,14 +297,14 @@
   <div class="hourrow">
     <label class="mdc-text-field mdc-text-field--filled hour-input">
       <span class="mdc-text-field__ripple"></span>
-      <input class="mdc-text-field__input" type="number" aria-labelledby="my-label-id">
-      <span class="mdc-floating-label" id="my-label-id">Rank</span>
+      <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="rank">
+      <span class="mdc-floating-label" id="my-label-id1">Rank</span>
       <span class="mdc-line-ripple"></span>
     </label>
     <label class="mdc-text-field mdc-text-field--filled hour-input">
       <span class="mdc-text-field__ripple"></span>
-      <input class="mdc-text-field__input" type="number" aria-labelledby="my-label-id">
-      <span class="mdc-floating-label" id="my-label-id">Name</span>
+      <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="name">
+      <span class="mdc-floating-label" id="my-label-id2">Name</span>
       <span class="mdc-line-ripple"></span>
     </label>
    </div>
@@ -515,7 +518,6 @@ if(localStorage.getItem('darkMode') == "true"){
   darkModeSwitch.checked = true
   document.querySelector('html').classList.add("night")
 }
-
 
 
 </script>
