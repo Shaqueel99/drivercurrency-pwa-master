@@ -47,24 +47,16 @@ const view = {
         homeContainer.classList.add('disappearing')
         startContainer.classList.add('appearing')
         startContainer.hidden=false
-      if(localStorage.getItem("BOC") != null && localStorage.getItem("MTrac") != null){
+    
+          document.getElementById("standardFab").disabled = false
+          document.getElementById("standardFab").style.opacity = 1
         document.getElementById("standardFa1").hidden = true
         document.getElementById("standardFa2").hidden = true
         document.getElementById("standardFa3").hidden = true
-        document.getElementById("standardFab").disabled = false
-        document.getElementById("standardFab").style.opacity =1 
-console.log("true")
-
-      }else{
-          document.getElementById("standardFab").disabled = true
-          document.getElementById("standardFab").style.opacity =0.7
-        document.getElementById("standardFa1").hidden = false
-        document.getElementById("standardFa2").hidden = false
-        document.getElementById("standardFa3").hidden = false
 
 
 
-      }
+      
  
         fabIcon.innerHTML='play_arrow'
         document.getElementById('share').hidden = true;
@@ -247,6 +239,8 @@ const timer={
     "stop": function(){
 
         view.ended();
+        let belrax = document.getElementById("belrax")
+        let MSS = document.getElementById("MSS")
         let input = document.getElementById("kminput");
 let button = document.getElementById("standardFab");
 button.hidden = false
@@ -260,6 +254,13 @@ input.addEventListener("change", stateHandle);
 
         timeEnded= new Date;
         localStorage.setItem('timerEndTime', timeEnded.toLocaleString());
+        if(belrax.checked){
+        localStorage.setItem('lastdrivenbelrax', timeEnded.toDateString().slice(4));
+        } else if(MSS.checked){
+
+            localStorage.setItem('lastdrivenmss', timeEnded.toDateString().slice(4));
+
+        }
         var endTime = currentTime;
         currentTime =  document.getElementById('endTime').innerHTML;
         document.getElementById('endTime').innerHTML = timePrintLayout(endTime).join(':');
@@ -287,28 +288,62 @@ input.addEventListener("change", stateHandle);
         localStorage.setItem('drivingLog', JSON.stringify(log))
     },
     "save": function(){
-  
-        if(localStorage.getItem("trips") != null){
-            var tripnum = parseInt(localStorage.getItem("trips"),10)
+        let belrax = document.getElementById("belrax")
+        let MSS = document.getElementById("MSS")
+        if(belrax.checked){
+        if(localStorage.getItem("belraxtrips") != null){
+            var tripnum = parseInt(localStorage.getItem("belraxtrips"),10)
            tripnum= +tripnum + +1
            var realnum = tripnum
-            localStorage.setItem("trips",realnum)
+            localStorage.setItem("belraxtrips",realnum)
         }
         else{
-            localStorage.setItem("trips",1)
-        }
-        if(localStorage.getItem("KM") != null){
+            localStorage.setItem("belraxtrips",1)
+        }}
+        else if(MSS.checked){
+
+
+            if(localStorage.getItem("msstrips") != null){
+                var tripnum = parseInt(localStorage.getItem("msstrips"),10)
+               tripnum= +tripnum + +1
+               var realnum = tripnum
+                localStorage.setItem("msstrips",realnum)
+            }
+            else{
+                localStorage.setItem("msstrips",1)
+            }
+            
+        } if(belrax.checked){
+        if(localStorage.getItem("belraxKM") != null){
           
           
         }
         else{
-            localStorage.setItem("KM",0)
+            localStorage.setItem("belraxKM",0)
         }
-        var kmcalc = parseInt(localStorage.getItem("KM"),10)
+        var kmcalc = parseInt(localStorage.getItem("belraxKM"),10)
         var kminput = parseInt(document.getElementById('kminput').value,10)
        kmcalc = +kmcalc + +kminput
         var kmreal = kmcalc
-        localStorage.setItem("KM",kmreal)
+        localStorage.setItem("belraxKM",kmreal)
+    } else if (MSS.checked){
+
+        if(localStorage.getItem("mssKM") != null){
+          
+          
+        }
+        else{
+            localStorage.setItem("mssKM",0)
+        }
+        var kmcalc = parseInt(localStorage.getItem("mssKM"),10)
+        var kminput = parseInt(document.getElementById('kminput').value,10)
+       kmcalc = +kmcalc + +kminput
+        var kmreal = kmcalc
+        localStorage.setItem("mssKM",kmreal)
+   
+
+
+    }
         console.log(localStorage)
         var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
         snackbar.labelText = "Your drive was saved."
@@ -362,46 +397,97 @@ function getTotalTime(){
 }else{
     return [[0,0,0],[0,0,0]]
 }
-}function getTotalTrips(){
-    if(localStorage.getItem('trips') != null){
-    var totaltrips = localStorage.getItem('trips');
+}function getbelraxTotalTrips(){
+    if(localStorage.getItem('belraxtrips') != null){
+    var belraxtotaltrips = localStorage.getItem('belraxtrips');
    
-return[totaltrips]
+return[belraxtotaltrips]
 }
 else{
    
-    var totaltrips = 0;
+    var belraxtotaltrips = 0;
    
-    return[totaltrips]
-}
-}
-function getTotalKM(){
-    if(localStorage.getItem('KM') != null){
-    var totalKM = localStorage.getItem('KM');
+    return[belraxtotaltrips]
+}}
+function getmssTotalTrips(){
+    if(localStorage.getItem('msstrips') != null){
+    var msstotaltrips = localStorage.getItem('msstrips');
    
-return[totalKM]
+return[msstotaltrips]
 }
 else{
    
-    var totalKM = 0;
+    var msstotaltrips = 0;
    
-    return[totalKM]
+    return[msstotaltrips]
+}
+}
+function getbelraxTotalKM(){
+    if(localStorage.getItem('belraxKM') != null){
+    var belraxtotalKM = localStorage.getItem('belraxKM');
+   
+return[belraxtotalKM]
+}
+else{
+   
+    var belraxtotalKM = 0;
+   
+    return[belraxtotalKM]
+}
+}function getmssTotalKM(){
+    if(localStorage.getItem('mssKM') != null){
+    var msstotalKM = localStorage.getItem('mssKM');
+   
+return[msstotalKM]
+}
+else{
+   
+    var msstotalKM = 0;
+   
+    return[msstotalKM]
 }
 }
 function homeData(){
+ 
+
+
     let input = document.getElementById("kminput");
     let button = document.getElementById("standardFab");
+    let drivenbelrax = localStorage.getItem("lastdrivenbelrax")
+    let drivenmss = localStorage.getItem("lastdrivenmss")
+    if(drivenmss != null){
+document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenmss
 
+    } else if (drivenbelrax != null){
+        document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenbelrax
+    }
     input.removeEventListener("change", stateHandle);
-    button.style.opacity = "1"
-    button.disabled = false;
+    button.style.opacity = "0.7"
+    button.disabled = true;
     var x = localStorage.getItem("identity")
     document.getElementById("identity").innerHTML = x
     var allTime = getTotalTime()
-    var allTrips = getTotalTrips()
-    var allkm = getTotalKM()
-    document.getElementById('totalkm').innerHTML = +allkm+ " &nbspKM&nbsp"
-    document.getElementById('totaltrips').innerHTML = +allTrips+ " Trips"
+    var belraxTrips = getbelraxTotalTrips()
+    var mssTrips = getmssTotalTrips()
+    var belraxkm = getbelraxTotalKM()
+    var msskm = getmssTotalKM()
+
+
+
+    let belrax = document.getElementById("belrax")
+    let MSS = document.getElementById("MSS")
+//setting defaults
+    if(belrax.checked){
+console.log("belrax shown")
+        document.getElementById('totaltrips').innerHTML = +belraxTrips+ "  Trips"
+        document.getElementById('totalkm').innerHTML = +belraxkm+ " &nbspKM&nbsp"
+    }else if(MSS.checked){
+       console.log("MSS shown") 
+       document.getElementById('totaltrips').innerHTML = +mssTrips+ "  Trips"
+       document.getElementById('totalkm').innerHTML = +msskm+ " &nbspKM&nbsp"
+    }
+
+
     var hours = JSON.parse(localStorage.getItem('hours'))
     if(allTime[0][0] >= hours[0] && allTime[1][0] >= hours[1]){
         document.getElementById('welcome-text').innerHTML = "You've finished your hours!"
@@ -750,6 +836,12 @@ function stateHandle() {
     }
 }
 
+function disablebutton(){
+    let button = document.getElementById("standardFab");
+    button.disabled = true;
+    button.style.opacity = "0.7"
+}
+
 function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"})
@@ -763,20 +855,46 @@ function authenticate() {
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
+  function executebelrax() {
     return gapi.client.sheets.spreadsheets.values.get({
       "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
       "range": "A2:A"
     })
         .then(function(response) {
+            let vehicleno = document.getElementById('vehicleno').value
                 // Handle the results here (response.result has the parsed body).
                 let result = response.result;
   let numRows = result.values ;
- 
+  let existance ="nil"
+  var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+  let button = document.getElementById("standardFab");
   let is = numRows.length
   for (var i=0; i < is; i++){
   console.log(numRows[i][0]);
+  if (vehicleno == numRows[i][0]){
+console.log("exist")
+existance ="true"
+break
+  }else{
+      console.log("no exist")
+      existance ="false"
   }
+ 
+  }
+  if(existance=="true"){
+
+    snackbar.labelText = "Vehicle No (Belrax) Exists!"
+    snackbar.open()
+ 
+   
+    button.disabled = false;
+    button.style.opacity = 1;
+}else{
+ snackbar.labelText = "ERROR: Vehicle No (Belrax) Doesnt Exist!"
+    snackbar.open()
+    button.disabled = true;
+    button.style.opacity = 0.7;
+}
  
 
               },
@@ -788,17 +906,40 @@ function authenticate() {
       "range": "B2:B"
     })
         .then(function(response) {
+            let vehicleno = document.getElementById('vehicleno').value
+            var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
                 // Handle the results here (response.result has the parsed body).
                 let result = response.result;
-  let numRows = result.values ;
+                let numRows = result.values ;
+                let existance ="nil"
+                let button = document.getElementById("standardFab");
+                
+                let is = numRows.length
+                for (var i=0; i < is; i++){
+                console.log(numRows[i][0]);
+                if (vehicleno == numRows[i][0]){
+              console.log("exist")
+              existance ="true"
+              break
+                }else{
+                    console.log("no exist")
+                    existance ="false"
+                }
+               
+                }
+                if(existance=="true"){
+                 
+    snackbar.labelText = "Vehicle No (MSS) Exists!"
+    snackbar.open()
  
-  let is = numRows.length
-  for (var i=0; i < is; i++){
-  console.log(numRows[i][0]);
-  }
- 
-
-              },
+                  button.disabled = false;
+    button.style.opacity = 1;
+              }else{
+                snackbar.labelText = "ERROR: Vehicle No (MSS) Doesnt Exist!"
+                snackbar.open()
+                  button.disabled = true;
+                  button.style.opacity = 0.7;
+              }   },
               function(err) { console.error("Execute error", err); });
   }
   gapi.load("client:auth2", function() {

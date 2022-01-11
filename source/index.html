@@ -196,7 +196,7 @@
       <div class="flex-element__item">
           <div class="mdc-radio">
               <input class="mdc-radio__native-control" type="radio" id="belrax" name="themes"
-                  value="Belrex"checked aria-labelledby="theme-radios theme-default-label" >
+                  value="Belrex"checked aria-labelledby="theme-radios theme-default-label" onclick=homeData() >
               <div class="mdc-radio__background">
                   <div class="mdc-radio__outer-circle"></div>
                   <div class="mdc-radio__inner-circle"></div>
@@ -205,7 +205,7 @@
           <label id="theme-default-label" for="theme-default"><b>Belrex</b></label>
           <div class="mdc-radio">
             <input class="mdc-radio__native-control" type="radio" id="MSS" name="themes"
-                value="MSS"  aria-labelledby="theme-radios theme-dark-label"  >
+                value="MSS"  aria-labelledby="theme-radios theme-dark-label" onclick=homeData()  >
             <div class="mdc-radio__background">
                 <div class="mdc-radio__outer-circle"></div>
                 <div class="mdc-radio__inner-circle"></div>
@@ -218,19 +218,21 @@
 </div>
 
   <br>
+  <h4 id="lastdriven">Last Driven: Nil</h4>
+  <br>
 <div> <label class="mdc-text-field mdc-text-field--filled hour-input">
   <span class="mdc-text-field__ripple"></span>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="name">
+  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="vehicleno">
   <span class="mdc-floating-label" id="my-label-id2">Vehicle No</span>
   <span class="mdc-line-ripple"></span>
 </label></div>
 
-<button class="mdc-button mdc-button--raised" id="vehicleno" onclick="vehiclecheck()">Check Vehicle No</button>
+<button class="mdc-button mdc-button--raised" id="vehiclenobutton" onclick="vehiclecheck()">Check Vehicle No</button>
  <script>
 function vehiclecheck(){
 if(document.getElementById('belrax').checked){
 console.log("belrax checked")
-authenticate().then(loadClient).then(execute)
+authenticate().then(loadClient).then(executebelrax)
 }else if(document.getElementById('MSS').checked){
 console.log("MSS checked")
 authenticate().then(loadClient).then(executeMSS)
@@ -239,6 +241,7 @@ authenticate().then(loadClient).then(executeMSS)
 //authenticate().then(loadClient).then(execute)
 
  </script>
+
   </div>
   
 </div>
