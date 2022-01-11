@@ -82,9 +82,13 @@
                <a href="/" class="font-semibold ghost"><span>MT-RAC+</span></a>
                <ul class="flex items-center justify-between">
                   <!---->
-                  <li><a href="/admin" class="text-gray-600 ghost"> Admin </a></li>
+                  <li><a href="/admin" class="text-gray-600 ghost" id="identity"> Admin </a></li>
                   <div class="mr-base"></div>
                   <li>
+                     <script>
+                    var x = localStorage.getItem("identity")
+    document.getElementById("identity").innerHTML = x
+                     </script>
                      <a href="/me" class="inline-flex items-center text-gray-600 ghost">
                         <span>User Account</span><span class="ml-sm font-mono text-sm mr-1">3.7</span>
                         <svg class="fill-current w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -116,9 +120,9 @@
                      </div>
                      <li>
                         <label class="block mb-sm font-semibold" for="hubId">Hub</label>
-                        <select id="hubId" disabled="" class="form-field undefined" name="hubId">
+                        <select id="hubId"  class="form-field undefined"  name="hubId">
                            <option></option>
-                           <option value="1ce54ff6-a078-4042-8d9e-0774731e6fb2">1TPT</option>
+                           <option value="1ce54ff6-a078-4042-8d9e-0774731e6fb2">30SCE</option>
                            <option value="db886fca-16c7-4c36-b2a0-8fbcffeb87ee">3TPT</option>
                            <option value="4fea7bdb-ca41-4f4b-9d5d-d654209672d0">ALTI</option>
                            <option value="ddee2a05-6280-4f9f-a71d-d96db14a864b">East</option>
@@ -133,7 +137,7 @@
                      </li>
                      <li>
                         <label class="block mb-sm font-semibold" for="nodeId">Node</label>
-                        <select id="nodeId" disabled="" class="form-field undefined" name="nodeId">
+                        <select id="nodeId" class="form-field undefined" name="nodeId">
                            <option></option>
                            <option value="0c4e3afa-2965-4ff1-a482-79ae833ac580">CTN</option>
                            <option value="19b974f8-daec-43ae-a480-89eda5767684">ATC</option>
@@ -543,7 +547,7 @@
                      </li>
                      <!----><!----><!---->
                      <div class="flex justify-between py-md items center">
-                        <button type="submit" class="form-submit button button-primary"><span>Submit</span></button><!---->
+                        <button type="button" class="form-submit button button-primary" onclick=redirect()><span>Submit</span></button><!---->
                      </div>
                      <!----><!---->
                   </ul>
@@ -554,4 +558,15 @@
       </div>
       <script src="/js/chunk-vendors.f2f20f68.js"></script><script src="/js/app.20ae5d69.js"></script>
    </body>
+   <script>
+      function redirect(){
+      location.href ="index.html"
+      localStorage.setItem("MTrac",true)
+      console.log(localStorage)
+      
+      
+      }
+      
+      
+      </script>
 </html>

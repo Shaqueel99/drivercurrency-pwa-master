@@ -1,6 +1,10 @@
 
 
 $.ready(function(){
+  
+    document.getElementById("standardFa1").hidden = true
+    document.getElementById("standardFa2").hidden = true
+    document.getElementById("standardFa3").hidden = true
     var fabIcon = document.getElementById('fabIcon')
     var standardFab = document.getElementById('standardFab')
     var drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
@@ -16,7 +20,7 @@ $('#homeContainer').ready(function(){
  
     }else{
     homeData()
- 
+    
     }
     if(localStorage.getItem("timerStartTime")!= null){
         timeStarted = new Date(localStorage.getItem("timerStartTime"))
@@ -36,14 +40,31 @@ var currentMS;
 
 const view = {
     "start":function(arg){
+        
         console.log(localStorage)
         var timerContainer = document.getElementById('timerContainer')
         var startContainer = document.getElementById('startContainer')
         homeContainer.classList.add('disappearing')
         startContainer.classList.add('appearing')
         startContainer.hidden=false
-      
-        document.getElementById("standardFa").hidden = false
+      if(localStorage.getItem("BOC") != null && localStorage.getItem("MTrac") != null){
+        document.getElementById("standardFa1").hidden = true
+        document.getElementById("standardFa2").hidden = true
+        document.getElementById("standardFa3").hidden = true
+        document.getElementById("standardFab").disabled = false
+        document.getElementById("standardFab").style.opacity =1 
+console.log("true")
+
+      }else{
+          document.getElementById("standardFab").disabled = true
+          document.getElementById("standardFab").style.opacity =0.7
+        document.getElementById("standardFa1").hidden = false
+        document.getElementById("standardFa2").hidden = false
+        document.getElementById("standardFa3").hidden = false
+
+
+
+      }
  
         fabIcon.innerHTML='play_arrow'
         document.getElementById('share').hidden = true;
@@ -120,6 +141,9 @@ const view = {
         }, 300)
     },
     "home":function(){
+        document.getElementById("standardFa1").hidden = true
+        document.getElementById("standardFa2").hidden = true
+        document.getElementById("standardFa3").hidden = true
         var endContainer = document.getElementById('endContainer')
         var homeContainer = document.getElementById('homeContainer')
         endContainer.classList.add('disappearing')
@@ -156,7 +180,9 @@ const view = {
     "onboard":function(){
         var homeContainer = document.getElementById('homeContainer')
         var onboardingContainer = document.getElementById('onboardingContainer')
-  
+        document.getElementById("standardFa1").hidden = true
+        document.getElementById("standardFa2").hidden = true
+        document.getElementById("standardFa3").hidden = true
         homeContainer.hidden = true
         standardFab.classList.add('mdc-fab--exited')
         onboardingContainer.classList.add('appearing')
@@ -165,7 +191,7 @@ const view = {
         
         loadStates()
         standardFab.onclick = function(){
-            document.getElementById("identity").innerHTML = document.getElementById("rank").value + " " +document.getElementById("name").value
+            document.getElementById("identity").innerHTML = document.getElementById("rank").value + " " +document.getElementById("urname").value
             localStorage.setItem("identity", document.getElementById("identity").innerHTML ) 
       
            
@@ -185,6 +211,10 @@ const skills = [
 
 const timer={
     "start":function(continued){
+        document.getElementById("standardFab").hidden = true
+        document.getElementById("standardFa1").hidden = true
+        document.getElementById("standardFa2").hidden = true
+        document.getElementById("standardFa3").hidden = true
         var html = document.getElementById("timer")
         html.innerHTML="00:00:00"
         timer.update(html)
@@ -215,10 +245,11 @@ const timer={
         return [h,m,s];
     },
     "stop": function(){
+
         view.ended();
         let input = document.getElementById("kminput");
 let button = document.getElementById("standardFab");
-
+button.hidden = false
 button.style.opacity = "0.5"
   button.disabled = true;
  
@@ -369,8 +400,8 @@ function homeData(){
     var allTime = getTotalTime()
     var allTrips = getTotalTrips()
     var allkm = getTotalKM()
-    document.getElementById('totalkm').innerHTML = allkm
-    document.getElementById('totaltrips').innerHTML = allTrips
+    document.getElementById('totalkm').innerHTML = +allkm+ " &nbspKM&nbsp"
+    document.getElementById('totaltrips').innerHTML = +allTrips+ " Trips"
     var hours = JSON.parse(localStorage.getItem('hours'))
     if(allTime[0][0] >= hours[0] && allTime[1][0] >= hours[1]){
         document.getElementById('welcome-text').innerHTML = "You've finished your hours!"
@@ -452,7 +483,9 @@ function expandCard(element){
 function discardTimer(){
     let input = document.getElementById("kminput");
     let button = document.getElementById("standardFab");
-    document.getElementById("standardFa").hidden = true
+    document.getElementById("standardFa1").hidden = true
+    document.getElementById("standardFa2").hidden = true
+    document.getElementById("standardFa3").hidden = true
     input.removeEventListener("change", stateHandle);
     button.style.opacity = "1"
     button.disabled = false;
@@ -505,6 +538,7 @@ function manualSave(element, night){
     localStorage.setItem('drivingLog', JSON.stringify(log))
     snackbar.labelText = "Your Drive was Saved"
     snackbar.open()
+  
     homeData()
 }
 function openShareMenu(){
@@ -715,3 +749,58 @@ function stateHandle() {
         button.style.opacity = "1"
     }
 }
+
+function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"})
+        .then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  function loadClient() {
+    gapi.client.setApiKey("AIzaSyDy0ft9bnrHFaLABV78yM2tLGwZYP8Gj9I");
+    return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
+    return gapi.client.sheets.spreadsheets.values.get({
+      "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
+      "range": "A2:A"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                let result = response.result;
+  let numRows = result.values ;
+ 
+  let is = numRows.length
+  for (var i=0; i < is; i++){
+  console.log(numRows[i][0]);
+  }
+ 
+
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  function executeMSS() {
+    return gapi.client.sheets.spreadsheets.values.get({
+      "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
+      "range": "B2:B"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                let result = response.result;
+  let numRows = result.values ;
+ 
+  let is = numRows.length
+  for (var i=0; i < is; i++){
+  console.log(numRows[i][0]);
+  }
+ 
+
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client:auth2", function() {
+    gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
+  });
