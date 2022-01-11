@@ -1,7 +1,6 @@
 var CACHE_NAME = 'drivingLog';
 var urlsToCache = [
   'index.html',
-  'manifest.json',
   'assets/style.css',
   'assets/states.js',
   'assets/ready.svg',
