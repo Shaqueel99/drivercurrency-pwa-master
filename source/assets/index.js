@@ -40,14 +40,36 @@ var currentMS;
 
 const view = {
     "start":function(arg){
-        
+        document.getElementById('standardFab').hidden = true
+        let drivenbelrex = localStorage.getItem("lastdrivenbelrex")
+        var addbelrexmonths = new Date(drivenbelrex)
+        var finalbelrexmonths = addbelrexmonths.addMonths(3)
+        var belrexcheckdate = finalbelrexmonths.toDateString().slice(4)
+        if(isDateBeforeToday(new Date(belrexcheckdate))==true) {
+            document.getElementById('standardFab').hidden = true
+                }else if(isDateBeforeToday(new Date(belrexcheckdate))==false){
+            
+                   
+                    document.getElementById('standardFab').hidden = false
+                    
+                }
         console.log(localStorage)
+        let belrex = document.getElementById("belrex")
+        let MSS = document.getElementById("MSS")
         var timerContainer = document.getElementById('timerContainer')
         var startContainer = document.getElementById('startContainer')
+        var mssContainer = document.getElementById('mssContainer')
         homeContainer.classList.add('disappearing')
         startContainer.classList.add('appearing')
+        mssContainer.classList.add('appearing')
+      
+        if(belrex.checked){
         startContainer.hidden=false
-    
+        }
+        else if(MSS.checked){
+            mssContainer.hidden=false
+
+        }
           document.getElementById("standardFab").disabled = false
           document.getElementById("standardFab").style.opacity = 1
         document.getElementById("standardFa1").hidden = true
@@ -85,14 +107,15 @@ const view = {
         var timerContainer = document.getElementById('timerContainer')
         startContainer.classList.add('disappearing')
         homeContainer.classList.add('homeContainer')
-        timerContainer.classList.add('appearing')
-        timerContainer.hidden=false
+        
+     
         document.getElementById('share').hidden = true;
         document.getElementById('printButton').hidden = true;
-        document.getElementById('speedButton').hidden = false;
-        document.getElementById('closeButton').hidden = false;
-        standardFab.classList.add('mdc-fab--exited')
-        document.getElementById('stopFab').classList.remove('mdc-fab--exited')
+       
+        document.getElementById('closeButton').hidden = true;
+        
+       // standardFab.classList.add('mdc-fab--exited')
+       // document.getElementById('stopFab').classList.remove('mdc-fab--exited')
         currentNight = night;
         timer.start(continued)
         setTimeout(function(){
@@ -118,9 +141,9 @@ const view = {
         timerContainer.classList.add('disappearing')
         endContainer.hidden=false
         document.getElementById('printButton').hidden = true;
-        document.getElementById('speedButton').hidden = true;
+      
         standardFab.classList.remove('mdc-fab--exited')
-        fabIcon.innerHTML="save"
+        fabIcon.innerHTML="play_arrow"
         
 
         standardFab.onclick=function(){
@@ -143,7 +166,7 @@ const view = {
         homeContainer.classList.remove('disappearing')
         homeContainer.hidden=false;
         document.getElementById('printButton').hidden = false;
-        document.getElementById('speedButton').hidden = true;
+       
         document.getElementById('share').hidden = false;
         document.getElementById('closeButton').hidden = true;
         $('.container').each(function() {
@@ -203,14 +226,19 @@ const skills = [
 
 const timer={
     "start":function(continued){
-        document.getElementById("standardFab").hidden = true
+      
+        var timerContainer = document.getElementById('timerContainer')
+        timerContainer.classList.add('appearing')
+        timerContainer.hidden = false
         document.getElementById("standardFa1").hidden = true
         document.getElementById("standardFa2").hidden = true
         document.getElementById("standardFa3").hidden = true
         var html = document.getElementById("timer")
-        html.innerHTML="00:00:00"
+        standardFab.onclick=function(){
+            timer.stop()
+        }
         timer.update(html)
-        document.getElementById('tip').innerHTML = drivingTips[Math.floor(Math.random() * drivingTips.length)];
+       
         if(!continued){
             currentMS = 0;
             timeStarted= new Date;
@@ -221,7 +249,7 @@ const timer={
     "update" : function(html){
         setTimeout(function(){
             var difference = timer.format(Date.parse((new Date).toUTCString())-Date.parse(timeStarted.toUTCString()))
-            html.innerHTML= timePrintLayout(difference).join(':')
+          
             timer.update(html)
             currentTime = difference;
             currentMS = (Date.parse((new Date).toUTCString())-Date.parse(timeStarted.toUTCString()));
@@ -237,30 +265,22 @@ const timer={
         return [h,m,s];
     },
     "stop": function(){
-
+timerContainer.hidden = true
         view.ended();
-        let belrax = document.getElementById("belrax")
+        let belrex = document.getElementById("belrex")
         let MSS = document.getElementById("MSS")
-        let input = document.getElementById("kminput");
+       
 let button = document.getElementById("standardFab");
 button.hidden = false
-button.style.opacity = "0.5"
-  button.disabled = true;
+button.style.opacity = "1"
+  button.disabled = false;
  
-input.addEventListener("change", stateHandle);
 
 
 
 
-        timeEnded= new Date;
-        localStorage.setItem('timerEndTime', timeEnded.toLocaleString());
-        if(belrax.checked){
-        localStorage.setItem('lastdrivenbelrax', timeEnded.toDateString().slice(4));
-        } else if(MSS.checked){
 
-            localStorage.setItem('lastdrivenmss', timeEnded.toDateString().slice(4));
-
-        }
+       
         var endTime = currentTime;
         currentTime =  document.getElementById('endTime').innerHTML;
         document.getElementById('endTime').innerHTML = timePrintLayout(endTime).join(':');
@@ -288,17 +308,17 @@ input.addEventListener("change", stateHandle);
         localStorage.setItem('drivingLog', JSON.stringify(log))
     },
     "save": function(){
-        let belrax = document.getElementById("belrax")
+        let belrex = document.getElementById("belrex")
         let MSS = document.getElementById("MSS")
-        if(belrax.checked){
-        if(localStorage.getItem("belraxtrips") != null){
-            var tripnum = parseInt(localStorage.getItem("belraxtrips"),10)
+        if(belrex.checked){
+        if(localStorage.getItem("belrextrips") != null){
+            var tripnum = parseInt(localStorage.getItem("belrextrips"),10)
            tripnum= +tripnum + +1
            var realnum = tripnum
-            localStorage.setItem("belraxtrips",realnum)
+            localStorage.setItem("belrextrips",realnum)
         }
         else{
-            localStorage.setItem("belraxtrips",1)
+            localStorage.setItem("belrextrips",1)
         }}
         else if(MSS.checked){
 
@@ -313,40 +333,19 @@ input.addEventListener("change", stateHandle);
                 localStorage.setItem("msstrips",1)
             }
             
-        } if(belrax.checked){
-        if(localStorage.getItem("belraxKM") != null){
+        } if(belrex.checked){
+        if(localStorage.getItem("belrexKM") != null){
           
           
         }
         else{
-            localStorage.setItem("belraxKM",0)
+            localStorage.setItem("belrexKM",0)
         }
-        var kmcalc = parseInt(localStorage.getItem("belraxKM"),10)
-        var kminput = parseInt(document.getElementById('kminput').value,10)
-       kmcalc = +kmcalc + +kminput
-        var kmreal = kmcalc
-        localStorage.setItem("belraxKM",kmreal)
-    } else if (MSS.checked){
-
-        if(localStorage.getItem("mssKM") != null){
-          
-          
-        }
-        else{
-            localStorage.setItem("mssKM",0)
-        }
-        var kmcalc = parseInt(localStorage.getItem("mssKM"),10)
-        var kminput = parseInt(document.getElementById('kminput').value,10)
-       kmcalc = +kmcalc + +kminput
-        var kmreal = kmcalc
-        localStorage.setItem("mssKM",kmreal)
-   
-
-
     }
+    localStorage.setItem("isdriving",true)
         console.log(localStorage)
         var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
-        snackbar.labelText = "Your drive was saved."
+        snackbar.labelText = "Your drive has begun."
         snackbar.open();
         view.home();
     }
@@ -397,17 +396,17 @@ function getTotalTime(){
 }else{
     return [[0,0,0],[0,0,0]]
 }
-}function getbelraxTotalTrips(){
-    if(localStorage.getItem('belraxtrips') != null){
-    var belraxtotaltrips = localStorage.getItem('belraxtrips');
+}function getbelrexTotalTrips(){
+    if(localStorage.getItem('belrextrips') != null){
+    var belrextotaltrips = localStorage.getItem('belrextrips');
    
-return[belraxtotaltrips]
+return[belrextotaltrips]
 }
 else{
    
-    var belraxtotaltrips = 0;
+    var belrextotaltrips = 0;
    
-    return[belraxtotaltrips]
+    return[belrextotaltrips]
 }}
 function getmssTotalTrips(){
     if(localStorage.getItem('msstrips') != null){
@@ -422,17 +421,17 @@ else{
     return[msstotaltrips]
 }
 }
-function getbelraxTotalKM(){
-    if(localStorage.getItem('belraxKM') != null){
-    var belraxtotalKM = localStorage.getItem('belraxKM');
+function getbelrexTotalKM(){
+    if(localStorage.getItem('belrexmileage') != null){
+    var belrextotalKM = localStorage.getItem('belrexmileage');
    
-return[belraxtotalKM]
+return[belrextotalKM]
 }
 else{
    
-    var belraxtotalKM = 0;
+    var belrextotalKM = 0;
    
-    return[belraxtotalKM]
+    return[belrextotalKM]
 }
 }function getmssTotalKM(){
     if(localStorage.getItem('mssKM') != null){
@@ -447,44 +446,184 @@ else{
     return[msstotalKM]
 }
 }
-function homeData(){
- 
+function submitDrive(){
+    timeEnded= new Date;
+    localStorage.setItem('timerEndTime', timeEnded.toLocaleString());
+    if(belrex.checked){
+        
+    localStorage.setItem('lastdrivenbelrex', timeEnded.toDateString().slice(4));
+    } else if(MSS.checked){
 
+        localStorage.setItem('lastdrivenmss', timeEnded.toDateString().slice(4));
 
-    let input = document.getElementById("kminput");
-    let button = document.getElementById("standardFab");
-    let drivenbelrax = localStorage.getItem("lastdrivenbelrax")
-    let drivenmss = localStorage.getItem("lastdrivenmss")
-    if(drivenmss != null){
-document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenmss
-
-    } else if (drivenbelrax != null){
-        document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenbelrax
     }
-    input.removeEventListener("change", stateHandle);
-    button.style.opacity = "0.7"
-    button.disabled = true;
+    let oldodometer = parseFloat(document.getElementById('oldodometer').value).toFixed(2)
+    let newodometer = parseFloat(document.getElementById('newodometer').value).toFixed(2)
+    belrexmileage = newodometer-oldodometer
+    belrexkm = getbelrexTotalKM()
+    belrextotal = parseFloat(belrexmileage) + parseFloat(belrexkm)
+    localStorage.setItem('belrexmileagepertrip',parseFloat(belrexmileage).toFixed(2))
+localStorage.setItem("belrexmileage",belrextotal.toFixed(2))
+if(localStorage.getItem("belrexmileagewindow") == null){
+localStorage.setItem("belrexmileagewindow",0)
+}
+var ugh = parseFloat(localStorage.getItem("belrexmileagewindow"))
+var pertrip = parseFloat(localStorage.getItem("belrexmileagepertrip"))
+var combine = (ugh+pertrip).toFixed(2)
+localStorage.setItem("belrexmileagewindow",combine)
+
+if(parseFloat(localStorage.getItem('belrexmileagewindow')) >= 2){
+    localStorage.setItem("belrexmileagewindow",0)
+    localStorage.setItem('belrexcurrencywindow', null) 
+}
+console.log("hello")
+    document.getElementById('finishdrivecontainer').hidden =true
+localStorage.removeItem('isdriving')
+document.getElementById('homeContainer').classList.add('appearing')
+document.getElementById('homeContainer').hidden = false
+document.getElementById('standardFab').hidden = false
+document.getElementById('lastDrivenDate').hidden = true
+document.getElementById('timerContainer').classList.add('appearing')
+document.getElementById('timerContainer').classList.remove('disappearing')
+document.getElementById('timerContainer').style.visibility ="visible"
+authenticate().then(loadClient).then(submitgoogle)
+snackbar.labelText = "Your drive has been submitted to Google Sheets"
+    snackbar.open()
+homeData()
+}
+function finishdrive(){
+    document.getElementById('finishdrivecontainer').classList.add('appearing')
+document.getElementById('finishdrivecontainer').hidden =false 
+document.getElementById('homeContaineralt').hidden = true
+
+
+}
+function althomeData(){
+        document.getElementById('standardFab').hidden = true
+        document.getElementById('homeContainer').hidden = true
+        document.getElementById('homeContaineralt').classList.add('appearing')
+        document.getElementById('homeContaineralt').hidden =false 
+        
+        var x = localStorage.getItem("identity")
+        document.getElementById("identity").innerHTML = x
+        console.log("isdrivingg")
+        document.getElementById('closeButton').hidden = true
+        document.getElementById('timerContainer').hidden = true
+        document.getElementById('timerContainer').classList.add('disappearing')
+     document.getElementById('timerContainer').style.visibility ="hidden"
+         
+}
+function setdate(){
+   let newdate = document.getElementById('lastDrivenDate').value
+   let newnewdate = new Date(newdate)
+ console.log(newnewdate.toDateString().slice(4))
+ localStorage.setItem("lastdrivenbelrex",newnewdate.toDateString().slice(4))
+document.getElementById('setdate').hidden = true
+document.getElementById('lastDrivenDate').hidden = true
+homeData().then(view.start())
+}
+Date.isLeapYear = function (year) { 
+    return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)); 
+};
+
+Date.getDaysInMonth = function (year, month) {
+    return [31, (Date.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+};
+
+Date.prototype.isLeapYear = function () { 
+    return Date.isLeapYear(this.getFullYear()); 
+};
+
+Date.prototype.getDaysInMonth = function () { 
+    return Date.getDaysInMonth(this.getFullYear(), this.getMonth());
+};
+
+Date.prototype.addMonths = function (value) {
+    var n = this.getDate();
+    this.setDate(1);
+    this.setMonth(this.getMonth() + value);
+    this.setDate(Math.min(n, this.getDaysInMonth()));
+    return this;
+};
+function isDateBeforeToday(date) {
+    return new Date(date.toDateString()) < new Date(new Date().toDateString());
+   
+}
+function homeData(){
+    if(localStorage.getItem('isdriving') == "true"){
+        althomeData()
+ 
+    }
+    else{
+     
+   
+      
+    let button = document.getElementById("standardFab");
+    let drivenbelrex = localStorage.getItem("lastdrivenbelrex")
+    let drivenmss = localStorage.getItem("lastdrivenmss")
+  
+    
     var x = localStorage.getItem("identity")
     document.getElementById("identity").innerHTML = x
     var allTime = getTotalTime()
-    var belraxTrips = getbelraxTotalTrips()
+    var belrexTrips = getbelrexTotalTrips()
     var mssTrips = getmssTotalTrips()
-    var belraxkm = getbelraxTotalKM()
+    var belrexkm = getbelrexTotalKM()
     var msskm = getmssTotalKM()
+    
+    var addbelrexmonths = new Date(drivenbelrex)
+    var finalbelrexmonths = addbelrexmonths.addMonths(3)
+    var belrexcheckdate = finalbelrexmonths.toDateString().slice(4)
+    console.log(finalbelrexmonths.toDateString().slice(4))
+    console.log(isDateBeforeToday(new Date(belrexcheckdate)))
+    console.log(belrexcheckdate)
 
+    if(isDateBeforeToday(new Date(belrexcheckdate))==true) {
+console.log("license invalid")
+document.getElementById("belrexcurrencylicense").innerHTML="License Valid: No <h6>(Please contact Unit Commander to unlock your account)</h6>"
 
+    }else if(isDateBeforeToday(new Date(belrexcheckdate))==false){
 
-    let belrax = document.getElementById("belrax")
+        console.log("license valid")
+        document.getElementById('standardFab').hidden = false
+        document.getElementById("belrexcurrencylicense").innerHTML="License Valid: Yes"
+        
+    }
+    let belrex = document.getElementById("belrex")
     let MSS = document.getElementById("MSS")
 //setting defaults
-    if(belrax.checked){
-console.log("belrax shown")
-        document.getElementById('totaltrips').innerHTML = +belraxTrips+ "  Trips"
-        document.getElementById('totalkm').innerHTML = +belraxkm+ " &nbspKM&nbsp"
+    if(belrex.checked){
+console.log("belrex shown")
+if(drivenbelrex == null){
+    document.getElementById('lastdriven').innerHTML = "Last Driven: Nil "
+    document.getElementById('lastdrivencurrency').innerHTML = "Last Driven:"
+    
+        }else{
+document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenbelrex
+document.getElementById('lastdrivencurrency').innerHTML = "Last Driven: "+drivenbelrex
+
+var currencywindowtext = "Currency Window: "+drivenbelrex+ "  To  " +finalbelrexmonths.toDateString().slice(4)
+if((localStorage.getItem('belrexcurrencywindow') == null) || (localStorage.getItem('belrexcurrencywindow') == "null") ){
+ localStorage.setItem('belrexcurrencywindow', currencywindowtext) 
+
+}
+document.getElementById('belrexcurrencywindow').innerHTML = localStorage.getItem('belrexcurrencywindow')
+if(localStorage.getItem('belrexmileagewindow')!=null){
+document.getElementById('belrexcurrencymileage').innerHTML = "Current Mileage this Window: " +localStorage.getItem('belrexmileagewindow')+" KM"
+        }}
+        document.getElementById('totaltrips').innerHTML = +belrexTrips+ "  Trips"
+        document.getElementById('totalkm').innerHTML = +belrexkm+ " &nbspKM&nbsp"
     }else if(MSS.checked){
        console.log("MSS shown") 
+       if(drivenmss == null){
+        document.getElementById('lastdriven').innerHTML = "Last Driven: Nil "
+        
+            }else{
+    document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenmss
+            }
        document.getElementById('totaltrips').innerHTML = +mssTrips+ "  Trips"
        document.getElementById('totalkm').innerHTML = +msskm+ " &nbspKM&nbsp"
+       
     }
 
 
@@ -538,6 +677,7 @@ console.log("belrax shown")
         document.getElementById('skillList').innerHTML+= '<li class="mdc-list-item" tabindex="0"> <span class="mdc-list-item__ripple"></span> <span class="mdc-list-item__graphic material-icons" aria-hidden="true">'+skills[i].icon+'</span><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text">'+skills[i].name+'</span> <span class="mdc-list-item__secondary-text">Never Practiced</span></span></li>'
     }
 }
+ }
 }
 function timePrintLayout(time){
     var output= [];
@@ -567,20 +707,19 @@ function expandCard(element){
 
 }
 function discardTimer(){
-    let input = document.getElementById("kminput");
+    
     let button = document.getElementById("standardFab");
     document.getElementById("standardFa1").hidden = true
     document.getElementById("standardFa2").hidden = true
     document.getElementById("standardFa3").hidden = true
-    input.removeEventListener("change", stateHandle);
+    
     button.style.opacity = "1"
     button.disabled = false;
+    document.getElementById('stopFab').classList.add('mdc-fab--exited')
+    button.classList.remove('mdc-fab--exited')
+   button.hidden = false
     
-    
-   
-    
-    if(!(document.getElementById("timerContainer").hidden))
-    timer.stop()
+  
     view.home()
   
  
@@ -622,7 +761,7 @@ function manualSave(element, night){
     }
     log.push(saveObject)
     localStorage.setItem('drivingLog', JSON.stringify(log))
-    snackbar.labelText = "Your Drive was Saved"
+    snackbar.labelText = "Your Drive Has Begun"
     snackbar.open()
   
     homeData()
@@ -823,23 +962,17 @@ function _generateSkillChips(){
     }
 }
 function stateHandle() {
-    let input = document.getElementById("kminput");
+ 
     let button = document.getElementById("standardFab");
 
     
-    if(document.getElementById("kminput").value === "") {
-        button.disabled = true;
-       
-    } else {
-        button.disabled = false;
-        button.style.opacity = "1"
-    }
+   
 }
 
 function disablebutton(){
     let button = document.getElementById("standardFab");
     button.disabled = true;
-    button.style.opacity = "0.7"
+    button.style.opacity = "1"
 }
 
 function authenticate() {
@@ -855,7 +988,7 @@ function authenticate() {
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  function executebelrax() {
+  function executebelrex() {
     return gapi.client.sheets.spreadsheets.values.get({
       "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
       "range": "A2:A"
@@ -870,11 +1003,13 @@ function authenticate() {
   let button = document.getElementById("standardFab");
   let is = numRows.length
   for (var i=0; i < is; i++){
-  console.log(numRows[i][0]);
+    console.log(numRows[i][0]);
+
+  
   if (vehicleno == numRows[i][0]){
-console.log("exist")
-existance ="true"
-break
+    console.log("exist")
+    existance ="true"
+    break
   }else{
       console.log("no exist")
       existance ="false"
@@ -883,17 +1018,17 @@ break
   }
   if(existance=="true"){
 
-    snackbar.labelText = "Vehicle No (Belrax) Exists!"
+    snackbar.labelText = "Vehicle No (Belrex) Exists!"
     snackbar.open()
  
    
     button.disabled = false;
     button.style.opacity = 1;
 }else{
- snackbar.labelText = "ERROR: Vehicle No (Belrax) Doesnt Exist!"
+ snackbar.labelText = "ERROR: Vehicle No (Belrex) Doesnt Exist!"
     snackbar.open()
-    button.disabled = true;
-    button.style.opacity = 0.7;
+    button.disabled = false;
+    button.style.opacity = 1;
 }
  
 
@@ -937,11 +1072,74 @@ break
               }else{
                 snackbar.labelText = "ERROR: Vehicle No (MSS) Doesnt Exist!"
                 snackbar.open()
-                  button.disabled = true;
-                  button.style.opacity = 0.7;
+                  button.disabled = false;
+                  button.style.opacity = 1;
               }   },
               function(err) { console.error("Execute error", err); });
   }
+  function submitgoogle() {
+    let belrex = document.getElementById("belrex")
+    let vehicleno = document.getElementById('vehicleno').value.toString()
+    let starttime = document.getElementById('starttime').value.toString()
+    let endtime = document.getElementById('endtime').value.toString()
+    let oldodometer = document.getElementById('oldodometer').value.toString()
+    let newodometer = document.getElementById('newodometer').value.toString()
+    let toplace = document.getElementById('toplace').value.toString()
+    let fromplace =  document.getElementById('fromplace').value.toString()
+    let purpose = document.getElementById('Purpose').value.toString()
+    if(belrex.checked){
+        driverplatform ="BELREX"
+ 
+    }
+      drivername = document.getElementById('identity').innerHTML.toString()
+      const str = document.getElementById('fleet').innerHTML.toString()
+      const words = str.split(' ');
+     drivercompany=words[1]
+     driverdate = new Date().toLocaleDateString('en-SG')
+     drivervehicleno = vehicleno
+     driverstarttime = starttime
+     driverendtime = endtime
+     driveroldodometer = oldodometer
+     drivernewodometer = newodometer
+     drivermileage = newodometer-oldodometer
+     drivertoplace = toplace
+     driverfromplace = fromplace
+     driverpurpose = purpose
+    return gapi.client.sheets.spreadsheets.values.append({
+      "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
+      "range": "C2:C",
+      "valueInputOption": "USER_ENTERED",
+      "resource": {
+        "values": [
+          [
+            drivername,
+            drivercompany,
+            driverdate,
+            driverplatform,
+            drivervehicleno,
+            driverstarttime,
+            driverendtime,
+            driveroldodometer,
+            drivernewodometer,
+            drivermileage,
+            driverfromplace,
+            drivertoplace,
+            driverpurpose
+
+          ]
+        ]
+      }
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+
+
+
+
   gapi.load("client:auth2", function() {
     gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
   });

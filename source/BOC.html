@@ -1,311 +1,1685 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/functions.js" type="text/javascript"></script>
-    <script src="js/snap.svg-min.js" type="text/javascript"></script>
-    <script src="js/logo.min.js" type="text/javascript"></script>
-      <link href="assets/material.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/style.css">
-
-    <script type="text/javascript" src="assets/index.js"></script>
-
-    <link href="assets/material.css" rel="stylesheet">
-
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BOC</title>
-	<meta name="description" content="BOC checklist" />
-	<meta name="og:title" content="The checklist" />
-	<meta name="og:type" content="website" />
-	<meta name="og:description" content="BOC" />
-	<meta name="og:url" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link rel="stylesheet" href="css/style.css" media="screen">
-
-    
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
-	<![endif]-->
-
-	<!-- Favicons -->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
-	<script src="https://use.typekit.net/iyy0knd.js"></script>
-	<script>try{Typekit.load({ async: true });}catch(e){}</script>
-	
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	  ga('create', 'UA-22985555-46', 'humaan.com');
-	  ga('send', 'pageview');
-	
-	</script>
-	
-
-	
-</head>
-<html>
-  <header class="mdc-top-app-bar">
-    <div class="mdc-top-app-bar__row">
-      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        
-      <!--  <div class="mdc-menu-surface--anchor" id="share"> -->
-          
-
-          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"  id="closeButton" onclick="location.href='index.html'">close</button>
-          <a class="mdc-top-app-bar__title" id="identity" href="index.html" target="_blank" style="color: inherit; font-size: 24px;">  </a>
-   
-       
-       <!--<div class="mdc-menu mdc-menu-surface">
-            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-          <a class="mdc-list-item" role="menuitem" onclick="exportData(this)">
-            <span class="mdc-list-item__ripple"></span>
-            <span class="mdc-list-item__text">Export Data</span>
-          </a>
-          <li class="mdc-list-item" role="menuitem" onclick="jsShare()" hidden>
-            <span class="mdc-list-item__ripple"></span>
-            <span class="mdc-list-item__text">Share</span>
-          </li>
-        </ul>
-        </div>--> 
-      </div>
-    
-      </section>
-     
-       
-  
-       
-    </div>
-  
-    
-  </header>
-
-</div>
-<script>
-    var x = localStorage.getItem("identity")
-document.getElementById("identity").innerHTML = x
-     </script>
-<body>
-    <style>
-.mdc-top-app-bar{
-z-index: 99999;
-
-
-
-}
-.mdc-top-app-bar__title {
-overflow: visible;
-
-
-}
-
-    </style>
-    <br><br><br>
-<div class="container">
-	<header class="main">
-	<br>
-		<h1>BEFORE OPERATIONS CHECK (BOC) CHECKLIST</h1>
-	
-	</header>
-	
-	<div class="checklist">
-		<section>
-    <header>NOTE: Any defects including the items in the checklist found are to be reported to Transport Leader/3SG and above immediately and recorded in the ODD book</header>
-    <form action="/cgi-bin/Lib.exe" method=POST name="checks" ID="Form2">
-
-    <ul>
-        <li>
-            <input type="checkbox" name="item_0" id="item_0"><label for="item_0">Check Engine Oil in between minimum and maximum level</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_1" id="item_1"><label for="item_1">Check Brake Fluid is between minimum and maximum level.(if applicable)</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_2" id="item_2"><label for="item_2">Check Clutch Fluid is between minimum and maximum level. (if applicable)</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_3" id="item_3"><label for="item_3">Check Power Steering Oil is between minimum and maximum level</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_99" id="item_99"><label for="item_99"> Check Radiator Coolant is filled to the required level.</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_4" id="item_4"><label for="item_4">Check all wheel nuts are intact & tyre side wall for physical damage</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_6" id="item_6"><label for="item_6">Check Canopy Ropes are tightened.(if applicable)</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_7" id="item_7"><label for="item_7">Check Battery terminal/mounting bracket secured & terminal insulators are intact</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_8" id="item_8"><label for="item_8">Check Front & Rear Seat Belts are able to buckle and lock</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_9" id="item_9"><label for="item_9">Check Headlight/Signal Height/Tail Height/Brake Light/Horn/Wipers are working</label><span class="input"><span class="check"></span></span>
-        </li>
-
-        <li>
-            <input type="checkbox" name="item_11" id="item_11"><label for="item_11">Check SWD/IVD are working.</label><span class="input"><span class="check"></span></span>
-        </li>
-        <li>
-            <input type="checkbox" name="item_12" id="item_12"><label for="item_12">Check Fuel Tank level.(not less than 1/2 tank).</label><span class="input"><span class="check"></span></span>
-        </li>
-        <li>
-            <input type="checkbox" name="item_13" id="item_13"><label for="item_13">Check for abnormal noise/vibration and burning smell.</label><span class="input"><span class="check"></span></span>
-        </li>
-        <li>
-            <input type="checkbox" name="item_14" id="item_14"><label for="item_14">Check that reverse sensor is switched on.</label><span class="input"><span class="check"></span></span>
-        </li>
-        <li>
-            <input type="checkbox" name="item_15" id="item_15"><label for="item_15">Check that reverse camera is working.(if applicable)</label><span class="input"><span class="check"></span></span>
-        </li>
-    </ul>
- <br>
-    <input type="checkbox" name="item_16" id="item_16"><label for="item_16">  I acknowledge that I have read through, understood, and checked through the Before Operations Check (BOC) Checklist and have not found any defects</label><span class="input"><span class="check"></span></span>
-     
-</section>
-
-
-	</div><!--checklist-->
-	
-	<footer>
-        
-	</footer>
-</form>
-    <div>
-    <button type="button" class="btn btn-primary btn" style="font-size: 25rem;" onclick="location.href='index.html'">Cancel</button>  &nbsp;
-    <button type="button" class="btn btn-primary btn" id="continue" style="font-size: 25rem;opacity: 0.5;" onclick=redirect() disabled>Continue</button>
-    
-</div>
-    <br><br><br>
-
- 
-</div><!--container -->
-<script>
-function redirect(){
-location.href ="mtrac.html"
-localStorage.setItem("BOC",true)
-console.log(localStorage)
-
-
-}
-
-
-</script>
-<script>
-    if (localStorage.getItem("BOC") !=null){
-location.href="mtrac.html"
-
-
-
-    }
-    $checkboxes = $('#Form2 input:checkbox');
-$checkboxes.on('click', checkboxes);
-
-function checkboxes() {
-  var allChecked = $checkboxes.not(':checked').length == 0;
-  console.log(allChecked);
-
-  let button = document.getElementById("continue")
- if(allChecked == true){
-button.disabled = false;
-button.style.opacity = "1"
-console.log("works")
- }
- else{
-    button.style.opacity = "0.5"
-    button.disabled = true;
- }
-}
-
-
-</script>
-
-<script>
-    const drawerEl = document.querySelector('.mdc-drawer');
-    const drawer = new mdc.drawer.MDCDrawer.attachTo(drawerEl);
-    
-    // Instantiate MDC Top App Bar (required)
-    const topAppBarEl = document.querySelector('.mdc-top-app-bar');
-    const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarEl);
-    
-    topAppBar.setScrollTarget(document.querySelector('.main-content'));
-    topAppBar.listen('MDCTopAppBar:nav', () => {
-      drawer.open = !drawer.open;
-    });
-    </script>
-    
-<script>
-var selector = '.mdc-button, .mdc-card__primary-action, .mdc-fab';
-var ripples = [].map.call(document.querySelectorAll(selector), function(el) {
-  return new mdc.ripple.MDCRipple(el);
-});
-var menu = new mdc.menu.MDCMenu(document.querySelector('.mdc-menu'));
-var timeChips = new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
-var hazardChips = new mdc.chips.MDCChipSet(document.getElementById('hazards'));
-var comment= new mdc.textField.MDCTextField(document.getElementById('timeComment'))
-var settings = new mdc.dialog.MDCDialog(document.getElementById('settings'));
-var reminder = new mdc.dialog.MDCDialog(document.getElementById('reminder'));
-var stateSelect = new mdc.select.MDCSelect(document.getElementById('select'));
-var setupInputs = [].map.call(document.querySelectorAll('.hour-input'), function(el) {
-  return new mdc.textField.MDCTextField(el);
-});
-var manualFields = {"night": [].map.call(document.getElementById('nightForm').querySelectorAll('.mdc-text-field'), function(el) {
-  return new mdc.textField.MDCTextField(el);
-}), "day": [].map.call(document.getElementById('dayForm').querySelectorAll('.mdc-text-field'), function(el) {
-  return new mdc.textField.MDCTextField(el);
-})}
-var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
-
-//service worker for Progressive Web App mode
-window.addEventListener('beforeinstallprompt', (event) => {
-  console.log('👍', 'beforeinstallprompt', event);
-  window.deferredPrompt = event;
-});
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed D:
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
-const darkModeSwitch = new mdc.switchControl.MDCSwitch(document.getElementById('settings').querySelector('.settings-switch'));
-if(localStorage.getItem('darkMode') == "true"){
-  darkModeSwitch.checked = true
-  document.querySelector('html').classList.add("night")
-}
-
-
-</script>
 <style>
-
-div{
-    text-align:center;
+table, th, td, tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  vertical-align: text-top;
+}
+td{
+    word-wrap:break-word
+}
+.rotate {
+    transform: rotate(-90deg);
+    text-align: center;
+    vertical-align: middle;
 }
 </style>
-</body>
+
+
+
+<html>
+    <h2>BEFORE OPERATION SERVICE (BOS) CHECKLIST</h2>
+    <body>
+        <div>
+            <h4>BOS - VEHICLE</h4>
+            <br>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="56" width="60px">Drv Side</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Base Vehicle Platform - Vehicle Exterior</th>
+                </tr>
+                <tr>
+                    <td>Exterior Body (including windows, steps, handles, railings, mounts, bracketry, chains, stepladders, mirrors, boxes etc)</td>
+                    <td>Inspect exterior of vehicle for cracks, missing, loose and damaged parts.</td>
+                    <td>No crack, missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q1" value="Pass" id="ID1"></td>
+                    <td><input type="radio" name="q1" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Cables and Hoses</td>
+                    <td>Check cables and hoses for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q2" value="Pass" id="ID2"></td>
+                    <td><input type="radio" name="q2" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for air and oll leakages.</td>
+                    <td>No air and oil leakages.</td>
+                    <td><input type="radio" name="q3" value="Pass" id="ID3"></td>
+                    <td><input type="radio" name="q3" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Onboard Equipment</td>
+                    <td>Check that all are secured.</td>
+                    <td>All secured.</td>
+                    <td><input type="radio" name="q4" value="Pass" id="ID4"></td>
+                    <td><input type="radio" name="q4" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Drain Plugs</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Drain Plugs</td>
+                    <td>Check drain plugs are present.</td>
+                    <td>Drain plugs present.</td>
+                    <td><input type="radio" name="q5" value="Pass" id="ID5"></td>
+                    <td><input type="radio" name="q5" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check seal and threaded portion for damages.</td>
+                    <td>No damage to seal and threaded portion.</td>
+                    <td><input type="radio" name="q6" value="Pass" id="ID6"></td>
+                    <td><input type="radio" name="q6" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Fire Extinguisher System</th>
+                </tr>
+                <tr>
+                    <td rowspan="4">Fire Extinguisher 4.5kg</td>
+                    <td>Inspect for physical damage.</td>
+                    <td>No physical damage.</td>
+                    <td><input type="radio" name="q7" value="Pass" id="ID7"></td>
+                    <td><input type="radio" name="q7" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect pressure reading on fire extinguisher.</td>
+                    <td>Pressure must fall within green band.</td>
+                    <td><input type="radio" name="q8" value="Pass" id="ID8"></td>
+                    <td><input type="radio" name="q8" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check fire extinguisher lever locking pin is disengaged.</td>
+                    <td>Lever locking pin is disengaged on fire extinguisher.</td>
+                    <td><input type="radio" name="q9" value="Pass" id="ID9"></td>
+                    <td><input type="radio" name="q9" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check servicing / hydrostatic expiry date on fire extinguisher.</td>
+                    <td>Fire extinguisher servicing / hydrostatic date has not expired.</td>
+                    <td><input type="radio" name="q10" value="Pass" id="ID10"></td>
+                    <td><input type="radio" name="q10" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Pull Cable Assembly</td>
+                    <td>Inspect for missing and damaged parts, wear and tear.</td>
+                    <td>No missing and damaged parts, wear and tear.</td>
+                    <td><input type="radio" name="q11" value="Pass" id="ID11"></td>
+                    <td><input type="radio" name="q11" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Make sure that lockwire is intact and connected to fire extinguisher.</td>
+                    <td>Lockwire not broken and connected to fire extinguisher.</td>
+                    <td><input type="radio" name="q12" value="Pass" id="ID12"></td>
+                    <td><input type="radio" name="q12" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Crew Compartment</th>
+                </tr>
+                <tr>
+                    <td rowspan="5">Door (Driver, VC and Crew)</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>Doors able to open / close in a controlled manner.</td>
+                    <td><input type="radio" name="q13" value="Pass" id="ID13"></td>
+                    <td><input type="radio" name="q13" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Able to lock at fully closed position.</td>
+                    <td><input type="radio" name="q14" value="Pass" id="ID14"></td>
+                    <td><input type="radio" name="q14" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Make sure pneumatc door lock able to engage and disengage.</td>
+                    <td>Corresponds to indicator light on door switch.</td>
+                    <td><input type="radio" name="q15" value="Pass" id="ID15"></td>
+                    <td><input type="radio" name="q15" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Door in serviceable condition.</td>
+                    <td><input type="radio" name="q16" value="Pass" id="ID16"></td>
+                    <td><input type="radio" name="q16" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check door emergency override function is serviceable.</td>
+                    <td>Emergency override switch in serviceable condition.</td>
+                    <td><input type="radio" name="q17" value="Pass" id="ID17"></td>
+                    <td><input type="radio" name="q17" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Wheels and Suspension</th>
+                </tr>
+                <tr>
+                    <td rowspan="4">Tyres and CTIS Valves</td>
+                    <td>Inspect side wall for cuts and cracks.</td>
+                    <td>No cuts and cracks on side wall.</td>
+                    <td><input type="radio" name="q18" value="Pass" id="ID18"></td>
+                    <td><input type="radio" name="q18" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for tyre wear. (Visual check on wear Indicator)</td>
+                    <td>Wear limit should not be lesser than 5mm.</td>
+                    <td><input type="radio" name="q19" value="Pass" id="ID19"></td>
+                    <td><input type="radio" name="q19" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for missing, loose components and air leakages.</td>
+                    <td>No missing, loose components and air leakages.</td>
+                    <td><input type="radio" name="q20" value="Pass" id="ID20"></td>
+                    <td><input type="radio" name="q20" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that tyres are not under inflated.</td>
+                    <td>Tyres not under inflated.</td>
+                    <td><input type="radio" name="q21" value="Pass" id="ID21"></td>
+                    <td><input type="radio" name="q21" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Wheel Rim, Wheel Nuts and Wheel</td>
+                    <td>Inspect for oil leakages and damages.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q22" value="Pass" id="ID22"></td>
+                    <td><input type="radio" name="q22" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose and missing wheel nuts.</td>
+                    <td>No loose and missing wheel nuts.</td>
+                    <td><input type="radio" name="q23" value="Pass" id="ID23"></td>
+                    <td><input type="radio" name="q23" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Propshaft Assembly</td>
+                    <td>Inspect for dents, cracks, physical breakages, loose and missing bolts.</td>
+                    <td>No dents, cracks, physical breakages, loose and missing bolts.</td>
+                    <td><input type="radio" name="q24" value="Pass" id="ID24"></td>
+                    <td><input type="radio" name="q24" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Leaf spring Assembly / Shock Absorbers</td>
+                    <td>Check suspension springs for damage and broken leaves.</td>
+                    <td>No damage and broken leaves.</td>
+                    <td><input type="radio" name="q25" value="Pass" id="ID25"></td>
+                    <td><input type="radio" name="q25" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect U-bolt for damages and proper installation</td>
+                    <td>No damages and property secured at both ends.</td>
+                    <td><input type="radio" name="q26" value="Pass" id="ID26"></td>
+                    <td><input type="radio" name="q26" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect bump stop for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q27" value="Pass" id="ID27"></td>
+                    <td><input type="radio" name="q27" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Axle (Front and Rear)</td>
+                    <td>Inspect for oil leakages and damages from joints and surface.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q28" value="Pass" id="ID28"></td>
+                    <td><input type="radio" name="q28" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Transfer Case</td>
+                    <td>Inspect for oil leakages and damages.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q29" value="Pass" id="ID29"></td>
+                    <td><input type="radio" name="q29" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Steering Shaft</td>
+                    <td>Inspect for dents, cracks, physical breakages, loose and missing bolts.</td>
+                    <td>No dents, cracks, physical breakages, loose and missing bolts.</td>
+                    <td><input type="radio" name="q30" value="Pass" id="ID30"></td>
+                    <td><input type="radio" name="q30" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Steering Box</td>
+                    <td>Inspect for oil leakages and damages.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q31" value="Pass" id="ID31"></td>
+                    <td><input type="radio" name="q31" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Brakes</th>
+                </tr>
+                <tr>
+                    <td>Pneumatic and Brake Pipes</td>
+                    <td>Check for signs of damage, cracks, loose fittings and air leaks.</td>
+                    <td>No signs of damage, cracks, loose fittings and air leakages.</td>
+                    <td><input type="radio" name="q32" value="Pass" id="ID32"></td>
+                    <td><input type="radio" name="q32" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Air-Conditioner System</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Air-Conditioner Evaporator Unit</td>
+                    <td>Check for cleanliness, loose, missing and damaged parts.</td>
+                    <td>Clean. No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q33" value="Pass" id="ID33"></td>
+                    <td><input type="radio" name="q33" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for oil leakage.</td>
+                    <td>No oil leakage.</td>
+                    <td><input type="radio" name="q34" value="Pass" id="ID34"></td>
+                    <td><input type="radio" name="q34" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Fuel Tank</th>
+                </tr>
+                <tr>
+                    <td>Fuel Lubricity Filter</td>
+                    <td>Drain fiter water separator.</td>
+                    <td>Excess water drained off.</td>
+                    <td><input type="radio" name="q35" value="Pass" id="ID35"></td>
+                    <td><input type="radio" name="q35" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Fuel System (Fuel Tank and Fuel Cap)</td>
+                    <td>Inspect for oil leakages and stains on fuel tank and pipings.</td>
+                    <td>No leakages or stains. Make sure all pipings are secured.</td>
+                    <td><input type="radio" name="q36" value="Pass" id="ID36"></td>
+                    <td><input type="radio" name="q36" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check fuel cap is tight and secured.</td>
+                    <td>Fuel cap is tight and secured.</td>
+                    <td><input type="radio" name="q37" value="Pass" id="ID37"></td>
+                    <td><input type="radio" name="q37" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Fuel Tank Bin Door</td>
+                    <td>Perform functional checks.</td>
+                    <td>Bin doors able to be lowered in a controlled manner.</td>
+                    <td><input type="radio" name="q38" value="Pass" id="ID38"></td>
+                    <td><input type="radio" name="q38" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q39" value="Pass" id="ID39"></td>
+                    <td><input type="radio" name="q39" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that locking bin latches are intact and serviceable.</td>
+                    <td>Latches are intact and serviceable.</td>
+                    <td><input type="radio" name="q40" value="Pass" id="ID40"></td>
+                    <td><input type="radio" name="q40" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">Bins</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Bin Doors</td>
+                    <td>Perform functional checks.</td>
+                    <td>Bin doors able to be lowered in a controlled manner.</td>
+                    <td><input type="radio" name="q41" value="Pass" id="ID41"></td>
+                    <td><input type="radio" name="q41" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q42" value="Pass" id="ID42"></td>
+                    <td><input type="radio" name="q42" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that locking bin latches are intact and serviceable.</td>
+                    <td>Latches are intact and serviceable.</td>
+                    <td><input type="radio" name="q43" value="Pass" id="ID43"></td>
+                    <td><input type="radio" name="q43" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Exhaust</th>
+                </tr>
+                <tr>
+                    <td>Exhaust Pipe, Muffler, Fittings</td>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q44" value="Pass" id="ID44"></td>
+                    <td><input type="radio" name="q44" value="Fail"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="24" width="60px">Rear</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Base Vehicle Platform - Vehicle Exterior</th>
+                </tr>
+                <tr>
+                    <td>Exterior Body (including windows, steps, handles, railings, mounts, bracketry, chains, stepladders, mirrors, boxes etc)</td>
+                    <td>Inspect exterior of vehicle for cracks, missing, loose and damaged parts.</td>
+                    <td>No crack, missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q45" value="Pass" id="ID45"></td>
+                    <td><input type="radio" name="q45" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Cables and Hoses</td>
+                    <td>Check cables and hoses for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q46" value="Pass" id="ID46"></td>
+                    <td><input type="radio" name="q46" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Onboard Equipment</td>
+                    <td>Check that all are secured.</td>
+                    <td>All secured.</td>
+                    <td><input type="radio" name="q47" value="Pass" id="ID47"></td>
+                    <td><input type="radio" name="q47" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Electrical System</th>
+                </tr>
+                <tr>
+                    <td>Lightings (Taillight & Signal Light)</td>
+                    <td>Check cleanliness, signs of damage and secured to vehicle.</td>
+                    <td>Clean, no signs of damage and secured to vehicle.</td>
+                    <td><input type="radio" name="q48" value="Pass" id="ID48"></td>
+                    <td><input type="radio" name="q48" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Towing</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Tow pintle</td>
+                    <td rowspan="2">Inspect for serviceabity, missing and damaged parts.</td>
+                    <td>Tow Pintle serviceable, no missing and damaged parts. </td>
+                    <td><input type="radio" name="q49" value="Pass" id="ID49"></td>
+                    <td><input type="radio" name="q49" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Safety pin secured. </td>
+                    <td><input type="radio" name="q50" value="Pass" id="ID50"></td>
+                    <td><input type="radio" name="q50" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Rear Compressed Air Quick-Release Couplers</td>
+                    <td rowspan="2">Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q51" value="Pass" id="ID51"></td>
+                    <td><input type="radio" name="q51" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>No air leakage.</td>
+                    <td><input type="radio" name="q52" value="Pass" id="ID52"></td>
+                    <td><input type="radio" name="q52" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Electric Slave Sockets</td>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q53" value="Pass" id="ID53"></td>
+                    <td><input type="radio" name="q53" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">Rear Camera System</td>
+                </tr>
+                <tr>
+                    <td>Rear Camera Harness</td>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q54" value="Pass" id="ID54"></td>
+                    <td><input type="radio" name="q54" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Display Unit</td>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q55" value="Pass" id="ID55"></td>
+                    <td><input type="radio" name="q55" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect display for serviceability.</td>
+                    <td>Display projects live feed from rear camera.</td>
+                    <td><input type="radio" name="q56" value="Pass" id="ID56"></td>
+                    <td><input type="radio" name="q56" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">Crew Compartment</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">Rear Door (Not Applicable For FUE Variant)</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>Doors able to open/close In a controlled manner.</td>
+                    <td><input type="radio" name="q57" value="Pass" id="ID57"></td>
+                    <td><input type="radio" name="q57" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Able to lock at fully closed position.</td>
+                    <td><input type="radio" name="q58" value="Pass" id="ID58"></td>
+                    <td><input type="radio" name="q58" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Make sure pneumatic door lock able to engage and disengage.</td>
+                    <td>Corresponds to indicator light on door switch.</td>
+                    <td><input type="radio" name="q59" value="Pass" id="ID59"></td>
+                    <td><input type="radio" name="q59" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Door in serviceable condition.</td>
+                    <td><input type="radio" name="q60" value="Pass" id="ID60"></td>
+                    <td><input type="radio" name="q60" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check door emergency override function is serviceable.</td>
+                    <td>Emergency override switch in serviceable condition.</td>
+                    <td><input type="radio" name="q61" value="Pass" id="ID61"></td>
+                    <td><input type="radio" name="q61" value="Fail"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="48" width="60px">VC Side</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Base Vehicle Platform - Vehicle Exterior</th>
+                </tr>
+                <tr>
+                    <td>Exterior Body (including windows, steps, handles, railings, mounts, bracketry, chains, stepladders, mirrors, boxes etc)</td>
+                    <td>Inspect exterior of vehicle for cracks, missing, loose and damaged parts.</td>
+                    <td>No crack, missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q62" value="Pass" id="ID62"></td>
+                    <td><input type="radio" name="q62" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Cables and Hoses</td>
+                    <td>Check cables and hoses for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q63" value="Pass" id="ID63"></td>
+                    <td><input type="radio" name="q63" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Onboard Equipment</td>
+                    <td>Check that all are secured.</td>
+                    <td>All secured.</td>
+                    <td><input type="radio" name="q64" value="Pass" id="ID64"></td>
+                    <td><input type="radio" name="q64" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Drain Plugs</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Drain Plugs</td>
+                    <td>Check drain plugs are present.</td>
+                    <td>Drain plugs present.</td>
+                    <td><input type="radio" name="65" value="Pass" id="ID65"></td>
+                    <td><input type="radio" name="65" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check seal and threaded portion for damages.</td>
+                    <td>No damage to seal and threaded portion.</td>
+                    <td><input type="radio" name="66" value="Pass" id="ID66"></td>
+                    <td><input type="radio" name="66" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Wheels and Suspension</th>
+                </tr>
+                <tr>
+                    <td rowspan="4">Tyres and CTIS Valves</td>
+                    <td>Inspect side wall for cuts and cracks.</td>
+                    <td>No cuts and cracks on side wall.</td>
+                    <td><input type="radio" name="q67" value="Pass" id="ID67"></td>
+                    <td><input type="radio" name="q67" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for tyre wear. (Visual check on wear Indicator)</td>
+                    <td>Wear limit should not be lesser than 5mm.</td>
+                    <td><input type="radio" name="q68" value="Pass" id="ID68"></td>
+                    <td><input type="radio" name="q68" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for missing, loose components and air leakages.</td>
+                    <td>No missing, loose components and air leakages.</td>
+                    <td><input type="radio" name="q69" value="Pass" id="ID69"></td>
+                    <td><input type="radio" name="q69" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that tyres are not under inflated.</td>
+                    <td>Tyres not under inflated.</td>
+                    <td><input type="radio" name="q70" value="Pass" id="ID70"></td>
+                    <td><input type="radio" name="q70" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Wheel Rim, Wheel Nuts and Wheel</td>
+                    <td>Inspect for oil leakages and damages.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q71" value="Pass" id="ID71"></td>
+                    <td><input type="radio" name="q71" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose and missing wheel nuts.</td>
+                    <td>No loose and missing wheel nuts.</td>
+                    <td><input type="radio" name="q72" value="Pass" id="ID72"></td>
+                    <td><input type="radio" name="q72" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Propshaft Assembly</td>
+                    <td>Inspect for dents, cracks, physical breakages, loose and missing bolts.</td>
+                    <td>No dents, cracks, physical breakages, loose and missing bolts.</td>
+                    <td><input type="radio" name="q73" value="Pass" id="ID73"></td>
+                    <td><input type="radio" name="q73" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Leaf spring Assembly / Shock Absorbers</td>
+                    <td>Check suspension springs for damage and broken leaves.</td>
+                    <td>No damage and broken leaves.</td>
+                    <td><input type="radio" name="q74" value="Pass" id="ID74"></td>
+                    <td><input type="radio" name="q74" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect U-bolt for damages and proper installation</td>
+                    <td>No damages and property secured at both ends.</td>
+                    <td><input type="radio" name="q75" value="Pass" id="ID75"></td>
+                    <td><input type="radio" name="q75" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect bump stop for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q76" value="Pass" id="ID76"></td>
+                    <td><input type="radio" name="q76" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Axle (Front and Rear)</td>
+                    <td>Inspect for oil leakages and damages from joints and surface.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q77" value="Pass" id="ID77"></td>
+                    <td><input type="radio" name="q77" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Transfer Case</td>
+                    <td>Inspect for oil leakages and damages.</td>
+                    <td>No oil leakages and damages.</td>
+                    <td><input type="radio" name="q78" value="Pass" id="ID78"></td>
+                    <td><input type="radio" name="q78" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Brakes</th>
+                </tr>
+                <tr>
+                    <td>Pneumatic and Brake Pipes</td>
+                    <td>Check for signs of damage, cracks, loose fittings and air leaks.</td>
+                    <td>No signs of damage, cracks, loose fittings and air leakages.</td>
+                    <td><input type="radio" name="q79" value="Pass" id="ID79"></td>
+                    <td><input type="radio" name="q79" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Electrical System</th>
+                </tr>
+                <tr>
+                    <td rowspan="7">Battery Compartment (Main / Auxillary)</td>
+                    <td rowspan="2">Inspect battery mounting bracket for loose, missing and damaged parts.</td>
+                    <td>No cracks or fractures on structure.</td>
+                    <td><input type="radio" name="q80" value="Pass" id="ID80"></td>
+                    <td><input type="radio" name="q80" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>No loose or missing fasteners.</td>
+                    <td><input type="radio" name="q81" value="Pass" id="ID81"></td>
+                    <td><input type="radio" name="q81" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect battery terminal and cables for insulation, wires are not exposed and terminals are secured.</td>
+                    <td>Teminal and cables are insulated. Wires are not exposed, and terminals are secured.</td>
+                    <td><input type="radio" name="q82" value="Pass" id="ID82"></td>
+                    <td><input type="radio" name="q82" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect batteries for damage and/or acid leakage.</td>
+                    <td>No damage to the batteries and/or acid leakage.</td>
+                    <td><input type="radio" name="q83" value="Pass" id="ID83"></td>
+                    <td><input type="radio" name="q83" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that battery tray is secured.</td>
+                    <td>Battery tray secured.</td>
+                    <td><input type="radio" name="q84" value="Pass" id="ID84"></td>
+                    <td><input type="radio" name="q84" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Perform functional checks on bin doors.</td>
+                    <td>No melted and damaged parts.</td>
+                    <td><input type="radio" name="q85" value="Pass" id="ID85"></td>
+                    <td><input type="radio" name="q85" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Able to lock at fully opened and closed position.</td>
+                    <td><input type="radio" name="q86" value="Pass" id="ID86"></td>
+                    <td><input type="radio" name="q86" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Slave Connectors</td>
+                    <td rowspan="2">Inspect terminals for melted and damaged parts.</td>
+                    <td>No melted and damaged parts</td>
+                    <td><input type="radio" name="q87" value="Pass" id="ID87"></td>
+                    <td><input type="radio" name="q87" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Terminals not sunken in.</td>
+                    <td><input type="radio" name="q88" value="Pass" id="ID88"></td>
+                    <td><input type="radio" name="q88" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Air-Conditioner System</th>
+                </tr>
+                <tr>
+                    <td>Air-Conditioner</td>
+                    <td>Check condition and cleanliness.</td>
+                    <td>All pipings are property secured with no signs of leakage.</td>
+                    <td><input type="radio" name="q89" value="Pass" id="ID89"></td>
+                    <td><input type="radio" name="q89" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Fresh Air Fiter</td>
+                    <td>Check filter condition for damages and debris.</td>
+                    <td>Filter not damaged. Blow dust using compressed air if required.</td>
+                    <td><input type="radio" name="q90" value="Pass" id="ID90"></td>
+                    <td><input type="radio" name="q90" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Fresh Air Pre-filter</td>
+                    <td>Check filter condition for damages and debris.</td>
+                    <td>Filter not damaged. Blow dust using compressed air if required.</td>
+                    <td><input type="radio" name="q91" value="Pass" id="ID91"></td>
+                    <td><input type="radio" name="q91" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Air-Conditioner Evaporator Unit</td>
+                    <td>Check for oil leakage.</td>
+                    <td>No oil leakage.</td>
+                    <td><input type="radio" name="q92" value="Pass" id="ID92"></td>
+                    <td><input type="radio" name="q92" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">Crew Compartment</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">Rear Door (Driver, Commander and Crew)</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>Doors able to open/close In a controlled manner.</td>
+                    <td><input type="radio" name="q93" value="Pass" id="ID93"></td>
+                    <td><input type="radio" name="q93" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Able to lock at fully closed position.</td>
+                    <td><input type="radio" name="q94" value="Pass" id="ID94"></td>
+                    <td><input type="radio" name="q94" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Make sure pneumatic door lock able to engage and disengage.</td>
+                    <td>Door able to engage and disengage.</td>
+                    <td><input type="radio" name="q95" value="Pass" id="ID95"></td>
+                    <td><input type="radio" name="q95" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check door emergency override function is serviceable.</td>
+                    <td>Emergency override switch in serviceable condition.</td>
+                    <td><input type="radio" name="q96" value="Pass" id="ID96"></td>
+                    <td><input type="radio" name="q96" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">Bins</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Bin Doors</td>
+                    <td>Perform functional checks.</td>
+                    <td>Bin doors able to be lowered in a controlled manner.</td>
+                    <td><input type="radio" name="q97" value="Pass" id="ID97"></td>
+                    <td><input type="radio" name="q97" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q98" value="Pass" id="ID98"></td>
+                    <td><input type="radio" name="q98" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that locking bin latches are intact and serviceable.</td>
+                    <td>Latches are intact and serviceable.</td>
+                    <td><input type="radio" name="q99" value="Pass" id="ID99"></td>
+                    <td><input type="radio" name="q99" value="Fail"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="24" width="60px">Front</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Base Vehicle Platform - Vehicle Exterior</th>
+                </tr>
+                <tr>
+                    <td rowspan="3">Exterior Body (including windows, steps, handles, railings, mounts, bracketry, chains, stepladders, mirrors, boxes etc)</td>
+                    <td>Inspect exterior of vehicle for cracks, missing, loose and damaged parts.</td>
+                    <td>No crack, missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q100" value="Pass" id="ID100"></td>
+                    <td><input type="radio" name="q100" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for oil leakages.</td>
+                    <td>No oil leakages.</td>
+                    <td><input type="radio" name="q101" value="Pass" id="ID101"></td>
+                    <td><input type="radio" name="q101" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Make sure serviceability of bonnet latching locks.</td>
+                    <td>Locks are able to open and close.</td>
+                    <td><input type="radio" name="q102" value="Pass" id="ID102"></td>
+                    <td><input type="radio" name="q102" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Cables and Hoses</td>
+                    <td>Check cables and hoses for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q103" value="Pass" id="ID103"></td>
+                    <td><input type="radio" name="q103" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for air and oil leakages.</td>
+                    <td>Clean, no damage and secured.</td>
+                    <td><input type="radio" name="q104" value="Pass" id="ID104"></td>
+                    <td><input type="radio" name="q104" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Electrical System</th>
+                </tr>
+                <tr>
+                    <td>Lightings (Head light & Signal Light)</td>
+                    <td>Check cleanliness, signs of damage and secured to vehicle.</td>
+                    <td>Clean, no damage and secured.</td>
+                    <td><input type="radio" name="q105" value="Pass" id="ID105"></td>
+                    <td><input type="radio" name="q105" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Towing</th>
+                </tr>
+                <tr>
+                    <td rowspan="3">Front Compressed Air Quick - Release Couplers</td>
+                    <td>Inspect condition and cleanliness.</td>
+                    <td>No damage and clean.</td>
+                    <td><input type="radio" name="q106" value="Pass" id="ID106"></td>
+                    <td><input type="radio" name="q106" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check air quick - release couplers for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q107" value="Pass" id="ID107"></td>
+                    <td><input type="radio" name="q107" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check presence of coupler seals, and wear.</td>
+                    <td>Coupler seals present, and not worn.</td>
+                    <td><input type="radio" name="q108" value="Pass" id="ID108"></td>
+                    <td><input type="radio" name="q108" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Electric Slave Sockets</td>
+                    <td>Inspect for condition and cleanliness.</td>
+                    <td>No physical damage and clean.</td>
+                    <td><input type="radio" name="q109" value="Pass" id="ID109"></td>
+                    <td><input type="radio" name="q109" value="Fail"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="56" width="60px">Engine Compartment</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Power Train</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Engine</td>
+                    <td>Inspect engine oil level.</td>
+                    <td>
+                        Oil level on dipstick should be between "HIGH" and "LOW" marks. Top up, if required. If oil is contaminated or overfilled, refer to FMP.
+                        <h2>CAUTION</h2>
+                        Starting engine without engine oil may result in severe damage to the engine.
+                    </td>
+                    <td><input type="radio" name="q110" value="Pass" id="ID110"></td>
+                    <td><input type="radio" name="q110" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q111" value="Pass" id="ID111"></td>
+                    <td><input type="radio" name="q111" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="5">Transmission</td>
+                    <td>Inspect for presence of transmission oil.</td>
+                    <td>
+                        Transmission oil present. Top up, if required. Do not start engine if transmission oil is not present. If oil is contaminated or overfilled, refer to FMP.
+                        <h2>CAUTION</h2>
+                        Starting engine without transmission oil may result in severe damage to the transmission.
+                    </td>
+                    <td><input type="radio" name="q112" value="Pass" id="ID112"></td>
+                    <td><input type="radio" name="q112" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for any leaks, Irregularities and any damaged components.</td>
+                    <td>No leakage, Irregularities and any damaged components.</td>
+                    <td><input type="radio" name="q113" value="Pass" id="ID113"></td>
+                    <td><input type="radio" name="q113" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect transmission oil cooler for oil leakages</td>
+                    <td>No oil leakages.</td>
+                    <td><input type="radio" name="q114" value="Pass" id="ID114"></td>
+                    <td><input type="radio" name="q114" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q115" value="Pass" id="ID115"></td>
+                    <td><input type="radio" name="q115" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check transmission oll level through gear shifter.</td>
+                    <td>
+                        Oil level should read as "OK". Top up, if required. If oil is overfilled, refer to FMP.
+                        <h2>NOTE</h2>
+                        Refer to operator manual for correct oil level, check procedure if in doubt.
+                    </td>
+                    <td><input type="radio" name="q116" value="Pass" id="ID116"></td>
+                    <td><input type="radio" name="q116" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Radiator</td>
+                    <td>Inspect coolant level.</td>
+                    <td>Coolant should be at the base of radiator refill neck. Top up if required. If coolant is contaminated or overfilled refer to FMP.</td>
+                    <td><input type="radio" name="q117" value="Pass" id="ID117"></td>
+                    <td><input type="radio" name="q117" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for any leaks, irregularities and any damaged components.</td>
+                    <td>No damaged parts and leakages.</td>
+                    <td><input type="radio" name="q118" value="Pass" id="ID118"></td>
+                    <td><input type="radio" name="q118" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q119" value="Pass" id="ID119"></td>
+                    <td><input type="radio" name="q119" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Coolant Pipes</td>
+                    <td>Check for loose and damaged parts, and leakages.</td>
+                    <td>No damaged parts and leakages.</td>
+                    <td><input type="radio" name="q120" value="Pass" id="ID120"></td>
+                    <td><input type="radio" name="q120" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Steering</td>
+                    <td>Inspect steering oil level.</td>
+                    <td>No damaged parts and leakages.</td>
+                    <td><input type="radio" name="q121" value="Pass" id="ID121"></td>
+                    <td><input type="radio" name="q121" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q122" value="Pass" id="ID122"></td>
+                    <td><input type="radio" name="q122" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Poly-vinyl Belt Systems and Tensioners</td>
+                    <td>Check for tension, cuts and tears.</td>
+                    <td>Belts tensioned, no cuts and tears.</td>
+                    <td><input type="radio" name="q123" value="Pass" id="ID123"></td>
+                    <td><input type="radio" name="q123" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Windscreen Washer Reservoir</td>
+                    <td>Check windscreen washer reservoir.</td>
+                    <td>Sufficient water in reservoir. Replenish if required.</td>
+                    <td><input type="radio" name="q124" value="Pass" id="ID124"></td>
+                    <td><input type="radio" name="q124" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts, and leakages.</td>
+                    <td>No loose, missing and damaged parts, and no leakages.</td>
+                    <td><input type="radio" name="q125" value="Pass" id="ID125"></td>
+                    <td><input type="radio" name="q125" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Air Reservoir</td>
+                    <td>Drain all water from air reservoir.</td>
+                    <td>No water in reservoir before start of operation.</td>
+                    <td><input type="radio" name="q126" value="Pass" id="ID126"></td>
+                    <td><input type="radio" name="q126" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for air leakages.</td>
+                    <td>No air leakages.</td>
+                    <td><input type="radio" name="q127" value="Pass" id="ID127"></td>
+                    <td><input type="radio" name="q127" value="Fail"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="56" width="60px">Roof</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Base Vehicle Platform - Vehicle Exterior</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Exterior Body (including windows, steps, handles, railings, mounts, bracketry, chains, stepladders, mirrors, boxes etc)</td>
+                    <td>Inspect exterior of vehicle for cracks, missing, loose and damaged parts.</td>
+                    <td>No crack, missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q128" value="Pass" id="ID128"></td>
+                    <td><input type="radio" name="q128" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check side racks are properly secured to vehicle.</td>
+                    <td>Side racks secured properly to vehicle.</td>
+                    <td><input type="radio" name="q129" value="Pass" id="ID129"></td>
+                    <td><input type="radio" name="q129" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Onboard Equipment</td>
+                    <td>Check that all are secured.</td>
+                    <td>All secured.</td>
+                    <td><input type="radio" name="q130" value="Pass" id="ID130"></td>
+                    <td><input type="radio" name="q130" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Weapons Systems</th>
+                </tr>
+                <tr>
+                    <td rowspan="18">Remote Machine Gun (RMG) (Not Applicable For MED Varlant)</td>
+                    <td>Inspect firing panel, gunner display for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q131" value="Pass" id="ID131"></td>
+                    <td><input type="radio" name="q131" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check gunner display for fogging.</td>
+                    <td>No fogging.</td>
+                    <td><input type="radio" name="q132" value="Pass" id="ID132"></td>
+                    <td><input type="radio" name="q132" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect E-stop button, control handie, gimbal for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged part.</td>
+                    <td><input type="radio" name="q133" value="Pass" id="ID133"></td>
+                    <td><input type="radio" name="q133" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect gimbal for loose and damaged cable connectors.</td>
+                    <td>No loose and damaged cable connector.</td>
+                    <td><input type="radio" name="q134" value="Pass" id="ID134"></td>
+                    <td><input type="radio" name="q134" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect trigger lock pins and rear lock pins for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged part.</td>
+                    <td><input type="radio" name="q135" value="Pass" id="ID135"></td>
+                    <td><input type="radio" name="q135" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect cartridge collector for damage, wear and tear</td>
+                    <td>No damage, wear and tear.</td>
+                    <td><input type="radio" name="q136" value="Pass" id="ID136"></td>
+                    <td><input type="radio" name="q136" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect RMG ammo box for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged part.</td>
+                    <td><input type="radio" name="q137" value="Pass" id="ID137"></td>
+                    <td><input type="radio" name="q137" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check Integrate Day Laser Pointer (IDLP) for fogging, loose and damaged parts.</td>
+                    <td>No fogging, loose and damaged parts.</td>
+                    <td><input type="radio" name="q138" value="Pass" id="ID138"></td>
+                    <td><input type="radio" name="q138" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="9">Perform functional checks.</td>
+                    <td>Control handle tray able to deploy and stow.</td>
+                    <td><input type="radio" name="q139" value="Pass" id="ID139"></td>
+                    <td><input type="radio" name="q139" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Firing panel LEDs functional.</td>
+                    <td><input type="radio" name="q140" value="Pass" id="ID140"></td>
+                    <td><input type="radio" name="q140" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Gunner display functional.</td>
+                    <td><input type="radio" name="q141" value="Pass" id="ID141"></td>
+                    <td><input type="radio" name="q141" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>No BIT fault.</td>
+                    <td><input type="radio" name="q142" value="Pass" id="ID142"></td>
+                    <td><input type="radio" name="q142" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Charing assembly able to perform full charging cycle.</td>
+                    <td><input type="radio" name="q143" value="Pass" id="ID143"></td>
+                    <td><input type="radio" name="q143" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Fire and Safe actuator functional.</td>
+                    <td><input type="radio" name="q144" value="Pass" id="ID144"></td>
+                    <td><input type="radio" name="q144" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Make sure that no movement of RMG when beyond azimuth of +128 deg and-128 deg.</td>
+                    <td><input type="radio" name="q145" value="Pass" id="ID145"></td>
+                    <td><input type="radio" name="q145" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Make sure no movement of RMG when beyond elevation of +60 deg and below -10 deg.</td>
+                    <td><input type="radio" name="q146" value="Pass" id="ID146"></td>
+                    <td><input type="radio" name="q146" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Operation ceased when E stop button is pressed.</td>
+                    <td><input type="radio" name="q147" value="Pass" id="ID147"></td>
+                    <td><input type="radio" name="q147" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check limiter is present and not damaged.</td>
+                    <td>Limiter is present and not damaged.</td>
+                    <td><input type="radio" name="q148" value="Pass" id="ID148"></td>
+                    <td><input type="radio" name="q148" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">Smoke Grenade Launcher (SGL) (Only Applicable For SEC. REC ENG and SIG Variants)</td>
+                    <td>Inspect firing panel for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q149" value="Pass" id="ID149"></td>
+                    <td><input type="radio" name="q149" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for missing or damaged launcher tube rubber caps.</td>
+                    <td>Launcher tube rubber caps present, and not damaged.</td>
+                    <td><input type="radio" name="q150" value="Pass" id="ID150"></td>
+                    <td><input type="radio" name="q150" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check launcher tubes for debris or rust.</td>
+                    <td>No debris or rust.</td>
+                    <td><input type="radio" name="q151" value="Pass" id="ID151"></td>
+                    <td><input type="radio" name="q151" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Perform functional checks.</td>
+                    <td>No BIT fault and functional.</td>
+                    <td><input type="radio" name="q152" value="Pass" id="ID152"></td>
+                    <td><input type="radio" name="q152" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>7.62mm Box Bracket (Only Applicable For AMM and MOR Variants)</td>
+                    <td>Inspect for missing. loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q153" value="Pass" id="ID153"></td>
+                    <td><input type="radio" name="q153" value="Fail"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="rotate" rowspan="56" width="60px">Interior Cabin</th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th colspan="5">Vehicle Commander, Driver and Crew Compartment</th>
+                </tr>
+                <tr>
+                    <td>Vehicle Interior</td>
+                    <td>Check for smoke, spark and fire.</td>
+                    <td>No smoke, spark and fire.</td>
+                    <td><input type="radio" name="q154" value="Pass" id="ID154"></td>
+                    <td><input type="radio" name="q154" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">VC and Driver Seat with Seat Belt</td>
+                    <td>Inspect seat belt for cuts, frayed material and check functionality.</td>
+                    <td>Functional and no cuts and frayed material.</td>
+                    <td><input type="radio" name="q155" value="Pass" id="ID155"></td>
+                    <td><input type="radio" name="q155" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check seat belt locking mechanism.</td>
+                    <td>Seat belt able to lock and unlock.</td>
+                    <td><input type="radio" name="q156" value="Pass" id="ID156"></td>
+                    <td><input type="radio" name="q156" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q157" value="Pass" id="ID157"></td>
+                    <td><input type="radio" name="q157" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Perform functional checks by pulling and releasing of adjustment levers.</td>
+                    <td>Seats must be able to be adjusted in forward, backward, up and down.</td>
+                    <td><input type="radio" name="q158" value="Pass" id="ID158"></td>
+                    <td><input type="radio" name="q158" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Terrain Selection Switch.</td>
+                    <td>Perform functional checks.</td>
+                    <td>Selection switch operational, able to select the correct terrain.</td>
+                    <td><input type="radio" name="q159" value="Pass" id="ID159"></td>
+                    <td><input type="radio" name="q159" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="6">Crew Seat with Seat Belt</td>
+                    <td>Check for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q160" value="Pass" id="ID160"></td>
+                    <td><input type="radio" name="q160" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that seat able deploy and stow.</td>
+                    <td>Able to deploy and stow.</td>
+                    <td><input type="radio" name="q161" value="Pass" id="ID161"></td>
+                    <td><input type="radio" name="q161" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that seat velcro strap able to hold stowed seat.</td>
+                    <td>Able to hold stowed seat.</td>
+                    <td><input type="radio" name="q162" value="Pass" id="ID162"></td>
+                    <td><input type="radio" name="q162" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that seat leg able to lock and unlock.</td>
+                    <td>Able to lock and unlock.</td>
+                    <td><input type="radio" name="q163" value="Pass" id="ID163"></td>
+                    <td><input type="radio" name="q163" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect seat belt for cuts, frayed material and able to adjust.</td>
+                    <td>Able to adjust, no cuts and frayed material.</td>
+                    <td><input type="radio" name="q164" value="Pass" id="ID164"></td>
+                    <td><input type="radio" name="q164" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check seat belt locking mechanism.</td>
+                    <td>Seat belt able to lock and unlock.</td>
+                    <td><input type="radio" name="q165" value="Pass" id="ID165"></td>
+                    <td><input type="radio" name="q165" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">Hatch (Front and Rear)</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>Hatches able to be lowered in a controlled manner.</td>
+                    <td><input type="radio" name="q166" value="Pass" id="ID166"></td>
+                    <td><input type="radio" name="q166" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Able to lock at fully open and closed position.</td>
+                    <td><input type="radio" name="q167" value="Pass" id="ID167"></td>
+                    <td><input type="radio" name="q167" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect seals for cuts or tears.</td>
+                    <td>No cuts or tears.</td>
+                    <td><input type="radio" name="q168" value="Pass" id="ID168"></td>
+                    <td><input type="radio" name="q168" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check serviceablility and presence of lockpin.</td>
+                    <td>Lockpin present and serviceable.</td>
+                    <td><input type="radio" name="q169" value="Pass" id="ID169"></td>
+                    <td><input type="radio" name="q169" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Equipment Racks and Bracketry (Radio Rack, Ammo Rack, Rifle Rack, etc.)</td>
+                    <td>Check equipment racks and bracketry for loose, missing, damaged mountings or fasteners.</td>
+                    <td>No loose, missing, damaged mounting or fastener.</td>
+                    <td><input type="radio" name="q170" value="Pass" id="ID170"></td>
+                    <td><input type="radio" name="q170" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Fire Extinguisher, 1kg</td>
+                    <td>Inspect safety pin for damage.</td>
+                    <td>Safety pin in place and no damage.</td>
+                    <td><input type="radio" name="q171" value="Pass" id="ID171"></td>
+                    <td><input type="radio" name="q171" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check pressure reading on fire extinguisher.</td>
+                    <td>Pressure falls within green band.</td>
+                    <td><input type="radio" name="q172" value="Pass" id="ID172"></td>
+                    <td><input type="radio" name="q172" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check servicing / hydrostatic expiry date on fire extinguisher.</td>
+                    <td>Fire extinguisher servicing / hydrostatic date has not expired.</td>
+                    <td><input type="radio" name="q173" value="Pass" id="ID173"></td>
+                    <td><input type="radio" name="q173" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Onboard Equipment</td>
+                    <td>Check that all equipment are secured</td>
+                    <td>All secured.</td>
+                    <td><input type="radio" name="q174" value="Pass" id="ID174"></td>
+                    <td><input type="radio" name="q174" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Doors</td>
+                    <td>Perform functional checks.</td>
+                    <td>Doors able to open, close and lock.</td>
+                    <td><input type="radio" name="q175" value="Pass" id="ID175"></td>
+                    <td><input type="radio" name="q175" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Door Warning Light</td>
+                    <td>Make sure door warning light is not lit when all doors are closed.</td>
+                    <td>No light when all doors are closed.</td>
+                    <td><input type="radio" name="q176" value="Pass" id="ID176"></td>
+                    <td><input type="radio" name="q176" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Harness Bulkhead</td>
+                    <td>Inspect receptacle for physical damage.</td>
+                    <td>No physical damage.</td>
+                    <td><input type="radio" name="q177" value="Pass" id="ID177"></td>
+                    <td><input type="radio" name="q177" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q178" value="Pass" id="ID178"></td>
+                    <td><input type="radio" name="q178" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Circuit Breaker Panel</td>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q179" value="Pass" id="ID179"></td>
+                    <td><input type="radio" name="q179" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th colspan="5">Vetronics</th>
+                </tr>
+                <tr>
+                    <td rowspan="3">Docking Station</td>
+                    <td>Check for smooth deployment.</td>
+                    <td>Able to deploy and stow smoothly.</td>
+                    <td><input type="radio" name="q180" value="Pass" id="ID180"></td>
+                    <td><input type="radio" name="q180" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check VC/TC docking station mount is able to lock, unlock and secure C2 laptop.</td>
+                    <td>VC/TC docking station mount able to lock, unlock and secure C2 laptop.</td>
+                    <td><input type="radio" name="q181" value="Pass" id="ID181"></td>
+                    <td><input type="radio" name="q181" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q182" value="Pass" id="ID182"></td>
+                    <td><input type="radio" name="q182" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">C2 Laptop</td>
+                    <td>Make sure laptop is secured to docking station.</td>
+                    <td>Laptop secured.</td>
+                    <td><input type="radio" name="q183" value="Pass" id="ID183"></td>
+                    <td><input type="radio" name="q183" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Perform functional checks.</td>
+                    <td>Laptop able to switch on.</td>
+                    <td><input type="radio" name="q184" value="Pass" id="ID184"></td>
+                    <td><input type="radio" name="q184" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Navigation System - INU</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>Navigation system status verified on C2 computers.</td>
+                    <td><input type="radio" name="q185" value="Pass" id="ID185"></td>
+                    <td><input type="radio" name="q185" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>BIT shows "OK" status.</td>
+                    <td><input type="radio" name="q186" value="Pass" id="ID186"></td>
+                    <td><input type="radio" name="q186" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check INU for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q187" value="Pass" id="ID187"></td>
+                    <td><input type="radio" name="q187" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">VICS Ethernet Switch Unit</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>In vehicle drive mode, visually check Ethernet power Indicator is lit, red light shown.</td>
+                    <td><input type="radio" name="q188" value="Pass" id="ID188"></td>
+                    <td><input type="radio" name="q188" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Switch on any radio system or C2 system and visually check the assigned port. Ethemet port indicator is it, green light shown.</td>
+                    <td><input type="radio" name="q189" value="Pass" id="ID189"></td>
+                    <td><input type="radio" name="q189" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose harness connection and damaged parts.</td>
+                    <td>No loose harness connection and damaged parts.</td>
+                    <td><input type="radio" name="q190" value="Pass" id="ID190"></td>
+                    <td><input type="radio" name="q190" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Battery Monitoring Unit (BMU)</td>
+                    <td>Check for missing. loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q191" value="Pass" id="ID191"></td>
+                    <td><input type="radio" name="q191" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Perform functional checks.</td>
+                    <td>BMU able to display battery status. Battery voltage must be above 23V. If battery voltage is below 23V. tum on engine and charge batteries.</td>
+                    <td><input type="radio" name="q192" value="Pass" id="ID192"></td>
+                    <td><input type="radio" name="q192" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Auxiliary Power Distribution Module (APDM)</td>
+                    <td>Inspect for loose and damaged parts.</td>
+                    <td>No loose and damaged parts.</td>
+                    <td><input type="radio" name="q193" value="Pass" id="ID193"></td>
+                    <td><input type="radio" name="q193" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for tripped circuit breakers.</td>
+                    <td>No tripped circuit breaker.</td>
+                    <td><input type="radio" name="q194" value="Pass" id="ID194"></td>
+                    <td><input type="radio" name="q194" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Cabin Light (Driver, VC and Trooper Compartments)</td>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>All lights functioning, no defects.</td>
+                    <td><input type="radio" name="q195" value="Pass" id="ID195"></td>
+                    <td><input type="radio" name="q195" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Lights by default at lowest intensity In Silent watch, Drive mode.</td>
+                    <td><input type="radio" name="q196" value="Pass" id="ID196"></td>
+                    <td><input type="radio" name="q196" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check for damage and loose mountings.</td>
+                    <td>No damage, loose or missing mountings.</td>
+                    <td><input type="radio" name="q197" value="Pass" id="ID197"></td>
+                    <td><input type="radio" name="q197" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Connector Floor Plate</td>
+                    <td>Inspect for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q198" value="Pass" id="ID198"></td>
+                    <td><input type="radio" name="q198" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for damaged and loose connectors.</td>
+                    <td>No damaged and loose connectors.</td>
+                    <td><input type="radio" name="q199" value="Pass" id="ID199"></td>
+                    <td><input type="radio" name="q199" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Radios</td>
+                    <td>Check radios for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q200" value="Pass" id="ID200"></td>
+                    <td><input type="radio" name="q200" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Perform functional checks on radio system.</td>
+                    <td>Radios are serviceable.</td>
+                    <td><input type="radio" name="q201" value="Pass" id="ID201"></td>
+                    <td><input type="radio" name="q201" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Standing Platform</td>
+                    <td>Perform functional checks.</td>
+                    <td>Functional and able to deploy and stow.</td>
+                    <td><input type="radio" name="q202" value="Pass" id="ID202"></td>
+                    <td><input type="radio" name="q202" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q203" value="Pass" id="ID203"></td>
+                    <td><input type="radio" name="q203" value="Fail"></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <!-- 203 questions so far -->
+        <div>
+            <h4>Engine Variant (ENG)</h4>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Location</th>
+                    <th rowspan="2">Inspection/Test</th>
+                    <th rowspan="2">Specification/Criteria</th>
+                    <th rowspan="2">Pass</th>
+                    <th rowspan="2">Fail</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Items to be Checked</th>
+                </tr>
+                <tr>
+                    <th class="rotate" rowspan="2" width="60px">Rear</th>
+                    <td rowspan="2">Rear Rope</td>
+                    <td>Check straps for frays, wear and tear.</td>
+                    <td>No frays, wear and tear.</td>
+                    <td><input type="radio" name="q204" value="Pass" id="ID204"></td>
+                    <td><input type="radio" name="q204" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Check that hook Latch is able to spring back.</td>
+                    <td>Latch able to spring back.</td>
+                    <td><input type="radio" name="q205" value="Pass" id="ID205"></td>
+                    <td><input type="radio" name="q205" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th class="rotate" rowspan="3" width="60px">VC Side</th>
+                    <td rowspan="3">Hydraulic Tank</td>
+                    <td>Check hydraulic oil level.</td>
+                    <td>Oil level should be max. Top up if required.</td>
+                    <td><input type="radio" name="q206" value="Pass" id="ID206"></td>
+                    <td><input type="radio" name="q206" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect hydraulic pipes and hoses for cuts and oil leakage.</td>
+                    <td>No cuts and oll leakage.</td>
+                    <td><input type="radio" name="q207" value="Pass" id="ID207"></td>
+                    <td><input type="radio" name="q207" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q208" value="Pass" id="ID208"></td>
+                    <td><input type="radio" name="q208" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th class="rotate" rowspan="4" width="60px">Front</th>
+                    <td rowspan="4">Push Bar Assembly</td>
+                    <td>Inspect exterior of push bar for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q209" value="Pass" id="ID209"></td>
+                    <td><input type="radio" name="q209" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect hydraulic cylinders, pipings, fittings and manifold for oil leakage and damage.</td>
+                    <td>No oil leakage and damage.</td>
+                    <td><input type="radio" name="q210" value="Pass" id="ID210"></td>
+                    <td><input type="radio" name="q210" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>Push bar able to deploy and stow.</td>
+                    <td><input type="radio" name="q211" value="Pass" id="ID211"></td>
+                    <td><input type="radio" name="q211" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>CANDI display shows position of push bar.</td>
+                    <td><input type="radio" name="q212" value="Pass" id="ID212"></td>
+                    <td><input type="radio" name="q212" value="Fail"></td>
+                </tr>
+                <tr>
+                    <th class="rotate" rowspan="7" width="60px">Interior Cabin</th>
+                    <td rowspan="4">Engineer Cabin Rack</td>
+                    <td>Check for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and damaged parts.</td>
+                    <td><input type="radio" name="q213" value="Pass" id="ID213"></td>
+                    <td><input type="radio" name="q213" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Inspect nettings and straps for frays, wear and tear.</td>
+                    <td>No frays, wear and tear.</td>
+                    <td><input type="radio" name="q214" value="Pass" id="ID214"></td>
+                    <td><input type="radio" name="q214" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Inspect UGV charging port for missing, loose and damaged parts.</td>
+                    <td>No missing, loose and physical damaged parts.</td>
+                    <td><input type="radio" name="q215" value="Pass" id="ID215"></td>
+                    <td><input type="radio" name="q215" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Charging port cover is present.</td>
+                    <td><input type="radio" name="q216" value="Pass" id="ID216"></td>
+                    <td><input type="radio" name="q216" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">PTS Cabin Control</td>
+                    <td>Inspect for loose, missing and damaged parts.</td>
+                    <td>No loose, missing and damaged parts.</td>
+                    <td><input type="radio" name="q217" value="Pass" id="ID217"></td>
+                    <td><input type="radio" name="q217" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Perform functional checks.</td>
+                    <td>When "Test" button is pressed, all indication lights will light up and buzzer will be activated on PTS master control panel.</td>
+                    <td><input type="radio" name="q218" value="Pass" id="ID218"></td>
+                    <td><input type="radio" name="q218" value="Fail"></td>
+                </tr>
+                <tr>
+                    <td>Depressing button on PTS<br>
+                        Cabin Control, the PTS is able to:<br>
+                        - Tilt Up (SLOW), LED light goes off<br>
+                        - Tilt Down (Display)<br>
+                        - Lift Up, LED light goes off<br>
+                        - Lift Down</td>
+                    <td><input type="radio" name="q219" value="Pass" id="ID219"></td>
+                    <td><input type="radio" name="q219" value="Fail"></td>
+                </tr>
+            </table>    
+        </div>
+        <!-- 219 questions so far -->
+        <button type="button" class="btn btn-primary btn"  onclick="location.href='index.html'">Return</button>
+    </body>
 </html>
+<script>
+    var form_response = [];
+    for (let i = 1; i < 220; i++) {
+        document.getElementById("ID"+i.toString()).checked = true;
+    }
+    function getFormDate(){
+        form_ans = [];
+        for (let j = 1; j < 220; j++) {
+            var ans = document.getElementById("ID"+j.toString()).checked;
+            if(ans){
+                form_ans.push("Pass");
+            }
+            else{
+                form_ans.push("Fail");
+            }
+        }
+        form_response = form_ans;
+        return form_ans;
+    }
+</script>
+
+<!--
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><input type="radio" name="q200" value="Pass"></td>
+    <td><input type="radio" name="q200" value="Fail"></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><input type="radio" name="q200" value="Pass"></td>
+    <td><input type="radio" name="q200" value="Fail"></td>
+</tr>
+<tr>
+    <td></td>
+    <td><input type="radio" name="q200" value="Pass"></td>
+    <td><input type="radio" name="q200" value="Fail"></td>
+</tr>
+
+<tr>
+    <th colspan="5">Base Vehicle Platform - Vehicle Exterior</th>
+</tr>
