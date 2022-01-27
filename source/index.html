@@ -172,7 +172,7 @@
 <div class="mdc-card" ">
     <div class="mdc-card-content mdc-card__primary-action" onclick="expandCard(this.parentElement)">
     <h6><i class="material-icons  md-24">speed</i><br> Mileage</h6>
-    <h4 id="totalkm">1</h4>
+    <h4 id="totalkm" style="transform: translateY(16px);"></h4>
    
     
    
@@ -182,12 +182,22 @@
 <div class="mdc-card" >
   <div class="mdc-card-content mdc-card__primary-action"  onclick="expandCard(this.parentElement)">
   <h6><i class="material-icons md-24">directions_car</i><br> Drives</h6>
-  <h4 id="totaltrips">1</h4>
+  <h4 id="totaltrips" style="transform: translateY(16px);"></h4>
    
  
   </div>
  
 </div>
+<div class="mdc-card" >
+  <div class="mdc-card-content mdc-card__primary-action"  onclick=dialogswap()>
+  <h6><i class="material-icons md-24">today</i><br> License Issue Date</h6>
+  <h5 id="license"></h5>
+   
+ 
+  </div>
+ 
+</div>
+
 
 
  
@@ -221,7 +231,7 @@
 </div>
 <br>
   <div class="mdc-card" style="height: 55px;" >
-    <div class="mdc-card-content mdc-card__primary-action"  onclick=dialogswap() >
+    <div class="mdc-card-content mdc-card__primary-action"   >
       <h4 id="lastdriven" >Last Driven: Nil</h4>
 </div>
 </div>
@@ -234,16 +244,27 @@
 </label></div>
 <br>
 <button class="mdc-button mdc-button--raised" id="vehiclenobutton" onclick="vehiclecheck()">Verify Vehicle No</button>
+
+
+
  <script>
 function vehiclecheck(){
 if(document.getElementById('belrex').checked){
 console.log("belrex checked")
-authenticate().then(loadClient).then(executebelrex)
+if(gapi.auth2.getAuthInstance().isSignedIn.get() == true){
+  loadClient().then(executebelrex)
+}else if(gapi.auth2.getAuthInstance().isSignedIn.get() == false){
+authenticate().then(loadClient).then(executebelrex)}
 }else if(document.getElementById('MSS').checked){
 console.log("MSS checked")
-authenticate().then(loadClient).then(executeMSS)
+if(gapi.auth2.getAuthInstance().isSignedIn.get() == true){
+  loadClient().then(executeMSS)
+}
+else if(gapi.auth2.getAuthInstance().isSignedIn.get() == false){
+authenticate().then(loadClient).then(executeMSS)}
 }
 }
+
 //authenticate().then(loadClient).then(execute)
 function dialogswap(){
 
@@ -331,7 +352,29 @@ function dialogswap(){
 <h5 id="belrexcurrencymileage" >Current Mileage this Window: 0 KM</h5><hr>
 
 <h5 id="belrexcurrencylicense" >License Valid: </h5><hr>
-<br><br><br>
+
+<h5 id="belrexvcom" ><u>Vehicle Commander</u> </h5>
+
+<h5>Rank/Name: &nbsp;<input type="text"  id="belrexvcomname" style="transform: translateY(1px);"></h5> 
+<br>
+<div class="mdc-form-field">
+  <div class="mdc-checkbox">
+    <input type="checkbox"
+           class="mdc-checkbox__native-control"
+           id="checkbox-1"/>
+    <div class="mdc-checkbox__background">
+      <svg class="mdc-checkbox__checkmark"
+           viewBox="0 0 24 24">
+        <path class="mdc-checkbox__checkmark-path"
+              fill="none"
+              d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+      </svg>
+      <div class="mdc-checkbox__mixedmark"></div>
+    </div>
+    <div class="mdc-checkbox__ripple"></div>
+  </div>
+  <label for="checkbox-1" style="margin-bottom: -0.5rem;font-family: -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"><h6> My vehicle commander is qualified</h6></label>
+</div>  
 <div class="mdc-form-field">
   <div class="mdc-checkbox">
     <input type="checkbox"
@@ -350,6 +393,7 @@ function dialogswap(){
   </div>
   <label for="checkbox-1" style="margin-bottom: -0.5rem;font-family: -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"><h6> I acknowledge that the above information is accurate</h6></label>
 </div>  
+</div>
 </div>
 
   </div><br>
@@ -722,6 +766,58 @@ function dialogswap(){
   </div>
   
 </div>
+<div class="mdc-select mdc-select--filled" id="Coyselect">
+  <div class="mdc-select__anchor"
+       role="button"
+       aria-haspopup="listbox"
+       aria-expanded="false"
+       aria-labelledby="demo-label demo-selected-text">
+    <span class="mdc-select__ripple"></span>
+    <span class="mdc-floating-label">Company</span>
+    <span style="text-align:left;" class="mdc-select__selected-text"></span>
+    <span class="mdc-select__dropdown-icon">
+      <svg
+          class="mdc-select__dropdown-icon-graphic"
+          viewBox="7 10 10 5" focusable="false">
+        <polygon
+            class="mdc-select__dropdown-icon-inactive"
+            stroke="none"
+            fill-rule="evenodd"
+            points="7 10 12 15 17 10">
+        </polygon>
+        <polygon
+            class="mdc-select__dropdown-icon-active"
+            stroke="none"
+            fill-rule="evenodd"
+            points="7 15 12 10 17 15">
+        </polygon>
+      </svg>
+    </span>
+    <span class="mdc-line-ripple"></span>
+  </div>
+
+  <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth text-left">
+    <ul class="mdc-list" role="listbox" id="coySelectList" aria-label="Pick your Unit">
+
+
+    </ul>
+   
+  </div>
+  
+</div>
+<style>
+#select{
+
+width: 49%;
+position: relative;
+}
+#coyselect{
+
+  width: 49%;
+position: relative;
+}
+
+</style>
 <p class="message" id="setupMessage"></p> 
 <br>
 <small class="text-muted"></small>
@@ -823,8 +919,9 @@ function dialogswap(){
      -->License Info (Belrex)<!--
    --></h2>
       <div class="mdc-dialog__content">
-       <span>Belrex License Validity: XXXXX</span><br>
-       <span>Belrex License Expiry: XXXXX</span>
+       <span>Belrex License Validity: Jan 24 2022</span><br>
+       <span>Belrex License Expiry: May 01 2022</span><br>
+       <span>CAT: A</span>
       </div>
     </div>
     <div id="mssinfo" hidden>
@@ -832,8 +929,9 @@ function dialogswap(){
      -->License Info (MSS)<!--
    --></h2>
       <div class="mdc-dialog__content">
-       <span>MSS License Validity: XXXXX</span><br>
-       <span>MSS License Expiry: XXXXX</span>
+       <span>MSS License Validity: Jan 24 2022</span><br>
+       <span>MSS License Expiry:  May 01 2022</span><br>
+       <span>CAT: B</span>
       </div>
     </div>
       <div class="mdc-dialog__actions">
@@ -882,7 +980,7 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
   let tdydate = new Date()
  let formatt = tdydate.toISOString();
  let newformat = formatt.substring(0, 10);
-console.log(newformat)
+
 document.getElementById('lastDrivenDate').value= newformat
 document.getElementById('lastDrivenDate').max= newformat
 }else{
@@ -908,6 +1006,7 @@ var settings = new mdc.dialog.MDCDialog(document.getElementById('settings'));
 var reminder = new mdc.dialog.MDCDialog(document.getElementById('reminder'));
 
 var stateSelect = new mdc.select.MDCSelect(document.getElementById('select'));
+var coySelect = new mdc.select.MDCSelect(document.getElementById('Coyselect'));
 var setupInputs = [].map.call(document.querySelectorAll('.hour-input'), function(el) {
   return new mdc.textField.MDCTextField(el);
 });

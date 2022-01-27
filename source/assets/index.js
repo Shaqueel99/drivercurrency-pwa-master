@@ -16,10 +16,15 @@ $.ready(function(){
 })
 $('#homeContainer').ready(function(){
     if(localStorage.getItem('setUp')== null){
+        
         view.onboard()
  
     }else{
-    homeData()
+        gapi.load("client:auth2", function() {
+            gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
+            homeData()
+          });
+    
     
     }
     if(localStorage.getItem("timerStartTime")!= null){
@@ -190,7 +195,11 @@ const view = {
            
         }
         fabIcon.innerHTML="timer"
-        homeData()
+        gapi.load("client:auth2", function() {
+            gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
+            homeData()
+          });
+      
     },
     "onboard":function(){
         var homeContainer = document.getElementById('homeContainer')
@@ -554,10 +563,18 @@ function homeData(){
         althomeData()
  
     }
-    else{
-     
-   
-      
+    else{  
+        if(gapi.auth2.getAuthInstance().isSignedIn.get() == false){
+            authenticate().then(loadClient).then(executedriverdeets)
+            }else if(gapi.auth2.getAuthInstance().isSignedIn.get() == true){
+              executedriverdeets()
+          
+          
+            }
+       
+            var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+            snackbar.labelText = "Loading Data"
+            snackbar.open();
     let button = document.getElementById("standardFab");
     let drivenbelrex = localStorage.getItem("lastdrivenbelrex")
     let drivenmss = localStorage.getItem("lastdrivenmss")
@@ -599,30 +616,31 @@ if(drivenbelrex == null){
     document.getElementById('lastdrivencurrency').innerHTML = "Last Driven:"
     
         }else{
-document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenbelrex
-document.getElementById('lastdrivencurrency').innerHTML = "Last Driven: "+drivenbelrex
 
-var currencywindowtext = "Currency Window: "+drivenbelrex+ "  To  " +finalbelrexmonths.toDateString().slice(4)
+
+
+var currencywindowtext = "Currency Window: "+document.getElementById('lastdrivencurrency').innerHTML+ "  To  " +finalbelrexmonths.toDateString().slice(4)
 if((localStorage.getItem('belrexcurrencywindow') == null) || (localStorage.getItem('belrexcurrencywindow') == "null") ){
  localStorage.setItem('belrexcurrencywindow', currencywindowtext) 
 
 }
-document.getElementById('belrexcurrencywindow').innerHTML = localStorage.getItem('belrexcurrencywindow')
+document.getElementById('belrexcurrencywindow').innerHTML = currencywindowtext
+
 if(localStorage.getItem('belrexmileagewindow')!=null){
 document.getElementById('belrexcurrencymileage').innerHTML = "Current Mileage this Window: " +localStorage.getItem('belrexmileagewindow')+" KM"
         }}
-        document.getElementById('totaltrips').innerHTML = +belrexTrips+ "  Trips"
-        document.getElementById('totalkm').innerHTML = +belrexkm+ " &nbspKM&nbsp"
+        
+        
     }else if(MSS.checked){
        console.log("MSS shown") 
        if(drivenmss == null){
         document.getElementById('lastdriven').innerHTML = "Last Driven: Nil "
         
             }else{
-    document.getElementById('lastdriven').innerHTML = "Last Driven: "+drivenmss
+    
             }
-       document.getElementById('totaltrips').innerHTML = +mssTrips+ "  Trips"
-       document.getElementById('totalkm').innerHTML = +msskm+ " &nbspKM&nbsp"
+     
+       
        
     }
 
@@ -678,6 +696,7 @@ document.getElementById('belrexcurrencymileage').innerHTML = "Current Mileage th
     }
 }
  }
+ 
 }
 function timePrintLayout(time){
     var output= [];
@@ -690,10 +709,16 @@ function timePrintLayout(time){
 function loadStates(){
     $.getScript( "assets/states.js", function() {
         console.log(states)
+        console.log(coys)
         var list=document.getElementById('stateSelectList')
+        var coylist = document.getElementById('coySelectList')
         for(var i=0; i< states.length; i++)[
             list.innerHTML += '<li class="mdc-list-item" aria-selected="false" data-value="'+i+'" role="option"><span class="mdc-list-item__ripple"></span><span class="mdc-list-item__text">'+states[i].name+'</span></li>'
         ]
+        for(var i=0; i< coys.length; i++)[
+            coylist.innerHTML += '<li class="mdc-list-item" aria-selected="false" data-value="'+i+'" role="option"><span class="mdc-list-item__ripple"></span><span class="mdc-list-item__text">'+coys[i].name+'</span></li>'
+        ]
+        
       });
 }
 function expandCard(element){
@@ -978,14 +1003,29 @@ function disablebutton(){
 function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"})
-        .then(function() { console.log("Sign-in successful"); },
-              function(err) { console.error("Error signing in", err); });
+        .then(function() { 
+            
+            console.log("Sign-in successful"); 
+            var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+            snackbar.labelText = "Loading Data"
+            snackbar.open();
+        
+        },
+              function(err) { 
+                var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+                snackbar.labelText = "Error signing in"
+                snackbar.open();
+                console.error("Error signing in", err); });
   }
   function loadClient() {
     gapi.client.setApiKey("AIzaSyDy0ft9bnrHFaLABV78yM2tLGwZYP8Gj9I");
     return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
-        .then(function() { console.log("GAPI client loaded for API"); },
-              function(err) { console.error("Error loading GAPI client for API", err); });
+        .then(function() { console.log("GAPI client loaded for API"); 
+        
+    },
+              function(err) { console.error("Error loading GAPI client for API", err); 
+           
+            });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function executebelrex() {
@@ -1137,9 +1177,97 @@ function authenticate() {
               function(err) { console.error("Execute error", err); });
   }
 
+  function executedriverdeets() {
+    return gapi.client.sheets.spreadsheets.values.get({
+      "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
+      "range": "C1:O"
+    })
+        .then(function(response) {
+        
+                // Handle the results here (response.result has the parsed body).
+                let result = response.result;
+  let numRows = result.values ;
+  let is = numRows.length
+  var belrextotsmileage = 0
+  var msstotsmileage = 0
+  var belrextotstrips = 0
+  var msstotstrips = 0
+  const belrexdates = []
+  const mssdates = []
+for(i=0;i<is;i++){
+    
+if(numRows[i][0] ==localStorage.getItem('identity')){
+
+var mileeagge = numRows[i][9]
+
+if(numRows[i][3] == "BELREX"){
+ belrextotsmileage = parseFloat(belrextotsmileage) + parseFloat(mileeagge)
+ belrextotstrips = parseInt(belrextotstrips)+1
+ var formatdate = numRows[i][2]
+ formatdate = formatdate.substr(3, 2)+"/"+formatdate.substr(0, 2)+"/"+formatdate.substr(6, 4);
+
+ 
+  belrexdates.push(new Date(formatdate))
+
+} else if(numRows[i][3] == "MSS"){
+    msstotsmileage = parseFloat(msstotsmileage) + parseFloat(mileeagge)
+    msstotstrips = parseInt(msstotstrips)+1
+ 
+   var formatdate = numRows[i][2]
+   formatdate = formatdate.substr(3, 2)+"/"+formatdate.substr(0, 2)+"/"+formatdate.substr(6, 4);
+
+   
+    mssdates.push(new Date(formatdate))
+}
+
+}else{
+
+    
+}
+
+}
+
+  console.log(belrextotsmileage.toFixed(1))
+  const belrexmaxDate = new Date(Math.max.apply(null, belrexdates));
+  console.log(belrexmaxDate.toLocaleDateString('en-SG'))
+ var mssmaxDate = new Date(Math.max.apply(null, mssdates));
+  console.log(mssmaxDate.toLocaleDateString('en-SG'))
+
+  console.log(msstotsmileage.toFixed(1))
+  var belrexstartDate = new Date(belrexmaxDate)
+  var belrexnewendate = new Date(belrexmaxDate.addMonths(3))
+
+    var belrexcheckdate = belrexnewendate.toDateString().slice(4)
+    console.log(belrexnewendate.toDateString().slice(4))
+    console.log(isDateBeforeToday(new Date(belrexcheckdate)))
+    console.log(belrexcheckdate)
+    if(isDateBeforeToday(new Date(belrexcheckdate))==true) {
+        console.log("license invalid")
+        document.getElementById("belrexcurrencylicense").innerHTML="License Valid: No <h6>(Please contact Unit Commander to unlock your account)</h6>"
+        
+            }else if(isDateBeforeToday(new Date(belrexcheckdate))==false){
+        
+                console.log("license valid")
+                document.getElementById('standardFab').hidden = false
+                document.getElementById("belrexcurrencylicense").innerHTML="License Valid: Yes"
+                
+            }
+  if(document.getElementById('belrex').checked){
+  document.getElementById('totalkm').innerHTML = +belrextotsmileage.toFixed(1)+ " KM&nbsp"
+  document.getElementById('totaltrips').innerHTML = +belrextotstrips+ "  Trips"
+  document.getElementById('lastdriven').innerHTML = "Last Driven: "+belrexstartDate.toLocaleDateString('en-SG')
+  document.getElementById('license').innerHTML ="May 01 2022"
+  document.getElementById('lastdrivencurrency').innerHTML ="Last Driven: "+belrexstartDate.toLocaleDateString('en-SG')
+  document.getElementById('belrexcurrencywindow').innerHTML ="Currency Window: "+belrexstartDate.toLocaleDateString('en-SG')+" To "+belrexnewendate.toLocaleDateString('en-SG')
+  }else if (document.getElementById('MSS').checked){
+    document.getElementById('totalkm').innerHTML = +msstotsmileage.toFixed(1)+ " KM&nbsp"
+    document.getElementById('totaltrips').innerHTML = +msstotstrips+ "  Trips"
+    document.getElementById('lastdriven').innerHTML = "Last Driven: "+mssmaxDate.toLocaleDateString('en-SG')
+    document.getElementById('license').innerHTML ="Oct 27 2021"
+  }
+              },
+              function(err) { console.error("Execute error", err); });
+  }
 
 
-
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
-  });
+ 

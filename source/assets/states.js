@@ -1,6 +1,11 @@
 var states =[
      {name:"30SCE", total:40, night:10,}, {name:"3TPT", total:30, night:10}, 
 ]
+
+var coys = [
+
+    {name:'ALPHA'},{name:'BRAVO'},{name:'CHARLIE'},{name:'ME'},{name:'HQ'}
+]
 document.addEventListener("MDCSelect:change", function(index){
     if(typeof states[stateSelect.selectedIndex].message != 'undefined'){
         document.getElementById('setupMessage').innerHTML= states[stateSelect.selectedIndex].message
