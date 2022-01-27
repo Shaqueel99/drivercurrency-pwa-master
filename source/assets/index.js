@@ -107,17 +107,19 @@ const view = {
         }
         document.getElementById('printButton').hidden = true;
         standardFab.onclick = function(){
-            view.timer(timeChips.selectedChipIds.indexOf('night') != -1, false)
+            startContainer.hidden=true
+          timer.start()
         }
         setTimeout(function(){
-
+            homeContainer.hidden=true
+            homeContainer.classList.remove('disappearing')
         }, 300)
     },
     "timer": function(night, continued){
         var homeContainer = document.getElementById('homeContainer')
         var startContainer = document.getElementById('startContainer')
         var timerContainer = document.getElementById('timerContainer')
-        startContainer.classList.add('disappearing')
+      
         homeContainer.classList.add('homeContainer')
         
      
@@ -129,11 +131,7 @@ const view = {
        // standardFab.classList.add('mdc-fab--exited')
        // document.getElementById('stopFab').classList.remove('mdc-fab--exited')
         currentNight = night;
-        timer.start(continued)
-        setTimeout(function(){
-            startContainer.hidden=true
-      
-        }, 300)
+   
         if(night){
             localStorage.setItem('timerNight', true);
             if(localStorage.getItem('darkMode') != "true"){
@@ -163,9 +161,7 @@ const view = {
         }
         document.getElementById('stopFab').classList.add('mdc-fab--exited')
         comment.value = ""
-        setTimeout(function(){
-            timerContainer.hidden=true
-        }, 300)
+      
     },
     "home":function(){
         document.getElementById("standardFa1").hidden = true
