@@ -110,8 +110,7 @@ const view = {
             view.timer(timeChips.selectedChipIds.indexOf('night') != -1, false)
         }
         setTimeout(function(){
-            homeContainer.hidden=true
-            homeContainer.classList.remove('disappearing')
+
         }, 300)
     },
     "timer": function(night, continued){
@@ -133,7 +132,7 @@ const view = {
         timer.start(continued)
         setTimeout(function(){
             startContainer.hidden=true
-            homeContainer.hidden=true;
+      
         }, 300)
         if(night){
             localStorage.setItem('timerNight', true);
