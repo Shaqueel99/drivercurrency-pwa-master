@@ -21,8 +21,16 @@ $('#homeContainer').ready(function(){
  
     }else{
         gapi.load("client:auth2", function() {
-            gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
-            homeData()
+            gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"}
+            
+            
+            ).then(function(){
+               loadClient().then(homeData)
+                auth2 = gapi.auth2.getAuthInstance();
+                console.log(auth2.isSignedIn.get()); //now this always returns correctly        
+          
+              });;
+           
           });
     
     
@@ -196,8 +204,13 @@ const view = {
         }
         fabIcon.innerHTML="timer"
         gapi.load("client:auth2", function() {
-            gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"});
-            homeData()
+            gapi.auth2.init({client_id: "176297714700-ravp316n536bpg0v4c1kab5ld072fi2l.apps.googleusercontent.com"}).then(function(){
+
+                loadClient().then(homeData)
+                auth2 = gapi.auth2.getAuthInstance();
+                console.log(auth2.isSignedIn.get()); //now this always returns correctly        
+            
+              });
           });
       
     },
