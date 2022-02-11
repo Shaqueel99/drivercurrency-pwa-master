@@ -574,7 +574,7 @@ function homeData(){
             authenticate().then(loadClient).then(executedriverdeets)
             }else if(gapi.auth2.getAuthInstance().isSignedIn.get() == true){
           
-              if(window.location.href =="http://localhost:8000/indexalt.html" || window.location.href =="http://localhost:8000/indexalt"){
+              if(window.location.href =="http://localhost:8000/indexalt.html" || window.location.href =="http://localhost:8000/indexalt" || window.location.href == "https://inspiring-knuth-e4d3dd.netlify.app/indexalt" || window.location.href =="https://inspiring-knuth-e4d3dd.netlify.app/indexalt.html"){
                  
               executeadmin()
               let button = document.getElementById('standardFab')
