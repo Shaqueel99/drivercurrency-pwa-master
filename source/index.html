@@ -463,7 +463,7 @@ function dialogswap(){
     <label id="boc-default-label" for="boc-dark"><b>Not required</b></label>
       
       
-      <br><br>
+      <br>
 
    
 
@@ -472,6 +472,48 @@ function dialogswap(){
 
   </div><br>
  
+
+<hr>
+<legend id="BOC-radios" class="flex-element__label"><b><h4>AOS done?</b></h4></legend>
+<div class="flex-element__item">
+    <div class="mdc-radios1">
+        <input class="mdc-radio__native-control" type="radio"  name="AOS"
+             id="myRadioId7"  onclick="aosshow()"checked >
+        <div class="mdc-radio__background">
+            <div class="mdc-radio__outer-circle"></div>
+            <div class="mdc-radio__inner-circle"></div>
+        </div>
+    </div>
+    <label id="boc-default-label" for="boc-default"><b>Yes</b></label>
+    <div class="mdc-radios1">
+      <input class="mdc-radio__native-control" type="radio"  name="AOS"
+         id="myRadioId8" onclick="aosshow()"  >
+      <div class="mdc-radio__background">
+          <div class="mdc-radio__outer-circle"></div>
+          <div class="mdc-radio__inner-circle"></div>
+      </div>
+  </div>
+  <label id="boc-default-label" for="boc-dark"><b>No</b></label>
+  <div class="mdc-radios1">
+    <input class="mdc-radio__native-control" type="radio"  name="AOS"
+       id="myRadioId9" onclick="aosshow()"  >
+    <div class="mdc-radio__background">
+        <div class="mdc-radio__outer-circle"></div>
+        <div class="mdc-radio__inner-circle"></div>
+    </div>
+</div>
+<label id="boc-default-label" for="boc-dark"><b>Not required</b></label>
+  
+  
+  <br>
+
+
+
+
+
+
+</div><br>
+
 <br>
 <hr>
 
@@ -515,6 +557,7 @@ function dialogswap(){
 </div><br>
 <button class="mdc-button mdc-button--raised"  id="linkmtrac"  onclick="location.href=('mtrac.html')"hidden>Do MT-RAC </button> &nbsp; &nbsp;
 <button class="mdc-button mdc-button--raised"  id="linkboc"  onclick="location.href=('boc.html')"hidden>Do BOS </button>
+<button class="mdc-button mdc-button--raised"  id="linkaos"  onclick="location.href=('AOS.html')"hidden>Do AOS </button>
  </div>
 
  <script>
@@ -550,7 +593,21 @@ function dialogswap(){
   }
   }
   
+  function aosshow(){
+  if(document.getElementById('myRadioId7').checked){
   
+    document.getElementById('linkaos').hidden = true
+    
+  }
+  else if(document.getElementById('myRadioId8').checked){
+  document.getElementById('linkaos').hidden = false
+  
+  }
+  else if(document.getElementById('myRadioId9').checked){
+  document.getElementById('linkaos').hidden = true
+  
+  }
+  }
   </script>
 <style>
   .mdc-radios1{

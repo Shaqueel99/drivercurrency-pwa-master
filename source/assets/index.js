@@ -53,19 +53,17 @@ var currentMS;
 
 const view = {
     "start":function(arg){
-        document.getElementById('standardFab').hidden = true
-        let drivenbelrex = localStorage.getItem("lastdrivenbelrex")
-        var addbelrexmonths = new Date(drivenbelrex)
-        var finalbelrexmonths = addbelrexmonths.addMonths(3)
-        var belrexcheckdate = finalbelrexmonths.toDateString().slice(4)
-        if(isDateBeforeToday(new Date(belrexcheckdate))==true) {
+        if(localStorage.getItem('playbutton')=="true"){
+document.getElementById('standardFab').hidden = false
+
+
+        }else{
+
             document.getElementById('standardFab').hidden = true
-                }else if(isDateBeforeToday(new Date(belrexcheckdate))==false){
-            
-                   
-                    document.getElementById('standardFab').hidden = false
-                    
-                }
+        }
+    
+        
+      
         console.log(localStorage)
         let belrex = document.getElementById("belrex")
         let MSS = document.getElementById("MSS")
@@ -225,7 +223,7 @@ const view = {
         standardFab.onclick = function(){
             document.getElementById("identity").innerHTML = document.getElementById("rank").value + " " +document.getElementById("urname").value
             localStorage.setItem("identity", document.getElementById("identity").innerHTML ) 
-      
+          
            
             finishSetup()
         }
@@ -575,9 +573,15 @@ function homeData(){
         if(gapi.auth2.getAuthInstance().isSignedIn.get() == false){
             authenticate().then(loadClient).then(executedriverdeets)
             }else if(gapi.auth2.getAuthInstance().isSignedIn.get() == true){
-              executedriverdeets()
           
-          
+              if(window.location.href =="http://localhost:8000/indexalt.html" || window.location.href =="http://localhost:8000/indexalt"){
+                 
+              executeadmin()
+              let button = document.getElementById('standardFab')
+              button.hidden = true
+              
+            }
+            executedriverdeets()
             }
        
             var snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
@@ -627,12 +631,12 @@ if(drivenbelrex == null){
 
 
 
-var currencywindowtext = "Currency Window: "+document.getElementById('lastdrivencurrency').innerHTML+ "  To  " +finalbelrexmonths.toDateString().slice(4)
+var currencywindowtext = localStorage.getItem('lastdrivenbelrex')+" To "+finalbelrexmonths.toDateString().slice(4)
 if((localStorage.getItem('belrexcurrencywindow') == null) || (localStorage.getItem('belrexcurrencywindow') == "null") ){
  localStorage.setItem('belrexcurrencywindow', currencywindowtext) 
 
 }
-document.getElementById('belrexcurrencywindow').innerHTML = currencywindowtext
+
 
 if(localStorage.getItem('belrexmileagewindow')!=null){
 document.getElementById('belrexcurrencymileage').innerHTML = "Current Mileage this Window: " +localStorage.getItem('belrexmileagewindow')+" KM"
@@ -740,7 +744,7 @@ function expandCard(element){
 
 }
 function discardTimer(){
-    
+  
     let button = document.getElementById("standardFab");
     document.getElementById("standardFa1").hidden = true
     document.getElementById("standardFa2").hidden = true
@@ -751,9 +755,26 @@ function discardTimer(){
     document.getElementById('stopFab').classList.add('mdc-fab--exited')
     button.classList.remove('mdc-fab--exited')
    button.hidden = false
+   view.home()
+  
     
   
-    view.home()
+   
+  
+ 
+}
+
+
+
+function discardDetails(){
+
+    document.getElementById('closeButton').hidden = true
+  
+    location.reload(true)
+
+    
+
+ 
   
  
 }
@@ -1186,6 +1207,95 @@ function authenticate() {
               function(err) { console.error("Execute error", err); });
   }
 
+  function executeadmin() {
+   
+    return gapi.client.sheets.spreadsheets.values.get({
+      "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
+      "range": "C1:O"
+    })
+        .then(function(response) {
+            let coyline = document.getElementById('unitname').innerHTML+"/"+document.getElementById('coyname').innerHTML
+            ///localStorage.setItem(coyname,document.getElementById('coyname').innerHTML)
+          
+         if(localStorage.getItem('coyline')==null){
+          localStorage.setItem('coyline',coyline)
+         }
+         document.getElementById('adminfleet').innerHTML = "Admin View: "+localStorage.getItem('coyline')
+                // Handle the results here (response.result has the parsed body).
+                let result = response.result;
+  let numRows = result.values ;
+ 
+
+  let is = numRows.length
+  let names = []
+
+
+for(i=1;i<is;i++){
+    if(numRows[i][1]==localStorage.getItem('coyline')){
+names.push(numRows[i][0])
+    }
+}
+var uniq = names.reduce(function(a,b){
+    if (a.indexOf(b) < 0 ) a.push(b);
+    return a;
+  },[]);
+  
+const listadmin =  document.getElementsByClassName('mdc-list-item mdc-list-divider')
+for(e=0;e<uniq.length; e++){
+    
+    let adminview ='<li class="mdc-list-item mdc-list-divider" id="adminclick" tabindex="0" ><span class="mdc-list-item__ripple"></span><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text" id ="driver" ><h6>'+uniq[e]+'</h6></span></span></li>'
+    document.getElementById('admintest').innerHTML += adminview
+listadmin[e].setAttribute("onclick", "testadmin('"+uniq[e]+"')")
+
+}
+
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+
+  function testadmin(uniquedriver){
+    return gapi.client.sheets.spreadsheets.values.get({
+        "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
+        "range": "C1:O"
+      })
+          .then(function(response) {
+          
+                  // Handle the results here (response.result has the parsed body).
+                  let result = response.result;
+    let numRows = result.values ;
+    let is = numRows.length
+   let admindetails = document.getElementById('admindetailscontainer')
+   let insertadmin = document.getElementById('insertadmin')
+   let adminContainer = document.getElementById('homeContainer')
+   adminContainer.classList.remove('appearing')
+
+   admindetails.classList.remove('disappearing')
+   adminContainer.classList.add('disappearing')
+   admindetails.classList.add('appearing')
+   admindetails.hidden = false
+   adminContainer.hidden = true
+   document.getElementById('closeButton').hidden = false
+   document.getElementById('driveruniquename').innerHTML = '<h3 style="text-align: center;">'+uniquedriver+'</h3>'
+for(i=0;i<is;i++){
+    if(numRows[i][0] ==uniquedriver){
+       
+        
+        let admindetailsview = ' <tr class="mdc-data-table__row"><th class="mdc-data-table__cell" scope="row">'+numRows[i][2]+'</th><td class="mdc-data-table__cell">'+numRows[i][3]+'</td><td class="mdc-data-table__cell">'+numRows[i][4]+'</td><td class="mdc-data-table__cell">'+numRows[i][5]+'</td><td class="mdc-data-table__cell">'+numRows[i][6]+'</td><td class="mdc-data-table__cell">'+numRows[i][7]+'</td><td class="mdc-data-table__cell">'+numRows[i][8]+'</td><td class="mdc-data-table__cell">'+numRows[i][9]+'</td><td class="mdc-data-table__cell">'+numRows[i][10]+'</td><td class="mdc-data-table__cell">'+numRows[i][11]+'</td><td class="mdc-data-table__cell">'+numRows[i][12]+'</td></tr>'
+
+insertadmin.innerHTML +=admindetailsview 
+
+ 
+
+        
+    
+    }
+
+
+
+}
+  }
+          )}
+
   function executedriverdeets() {
     return gapi.client.sheets.spreadsheets.values.get({
       "spreadsheetId": "1UDIbD1gNPFlv3f5MdKzvie-jo8fGmHalorCbyq0SHc0",
@@ -1215,6 +1325,7 @@ if(numRows[i][3] == "BELREX"){
  var formatdate = numRows[i][2]
  formatdate = formatdate.substr(3, 2)+"/"+formatdate.substr(0, 2)+"/"+formatdate.substr(6, 4);
 
+
  
   belrexdates.push(new Date(formatdate))
 
@@ -1236,39 +1347,61 @@ if(numRows[i][3] == "BELREX"){
 
 }
 
-  console.log(belrextotsmileage.toFixed(1))
-  const belrexmaxDate = new Date(Math.max.apply(null, belrexdates));
-  console.log(belrexmaxDate.toLocaleDateString('en-SG'))
- var mssmaxDate = new Date(Math.max.apply(null, mssdates));
-  console.log(mssmaxDate.toLocaleDateString('en-SG'))
 
-  console.log(msstotsmileage.toFixed(1))
+  const belrexmaxDate = new Date(Math.max.apply(null, belrexdates));
+
+ var mssmaxDate = new Date(Math.max.apply(null, mssdates));
+
+
   var belrexstartDate = new Date(belrexmaxDate)
   var belrexnewendate = new Date(belrexmaxDate.addMonths(3))
 
     var belrexcheckdate = belrexnewendate.toDateString().slice(4)
-    console.log(belrexnewendate.toDateString().slice(4))
-    console.log(isDateBeforeToday(new Date(belrexcheckdate)))
-    console.log(belrexcheckdate)
-    if(isDateBeforeToday(new Date(belrexcheckdate))==true) {
-        console.log("license invalid")
-        document.getElementById("belrexcurrencylicense").innerHTML="License Valid: No <h6>(Please contact Unit Commander to unlock your account)</h6>"
-        
-            }else if(isDateBeforeToday(new Date(belrexcheckdate))==false){
-        
-                console.log("license valid")
-                document.getElementById('standardFab').hidden = false
-                document.getElementById("belrexcurrencylicense").innerHTML="License Valid: Yes"
-                
-            }
+console.log(isDateBeforeToday (new Date(belrexcheckdate)))
+
+if(isDateBeforeToday (new Date(belrexcheckdate))==false){
+    document.getElementById('belrexcurrencylicense').innerHTML = "License Valid: Yes"
+localStorage.setItem('playbutton',"true")
+}else{
+    localStorage.setItem('playbutton',"false")
+}
+   
   if(document.getElementById('belrex').checked){
   document.getElementById('totalkm').innerHTML = +belrextotsmileage.toFixed(1)+ " KM&nbsp"
   document.getElementById('totaltrips').innerHTML = +belrextotstrips+ "  Trips"
   document.getElementById('lastdriven').innerHTML = "Last Driven: "+belrexstartDate.toLocaleDateString('en-SG')
   document.getElementById('license').innerHTML ="May 01 2022"
+  
+  if(belrexstartDate !="Invalid Date"){
+
   document.getElementById('lastdrivencurrency').innerHTML ="Last Driven: "+belrexstartDate.toLocaleDateString('en-SG')
-  document.getElementById('belrexcurrencywindow').innerHTML ="Currency Window: "+belrexstartDate.toLocaleDateString('en-SG')+" To "+belrexnewendate.toLocaleDateString('en-SG')
-  }else if (document.getElementById('MSS').checked){
+ 
+  document.getElementById('lastDrivenDate').hidden = true  
+  document.getElementById('setdate').hidden = true  
+  if((localStorage.getItem('belrexcurrencywindow') == null) || (localStorage.getItem('belrexcurrencywindow') == "null") ){
+    document.getElementById('belrexcurrencywindow').innerHTML ="Currency Window: "+belrexstartDate.toLocaleDateString('en-SG')+" To "+belrexnewendate.toLocaleDateString('en-SG')
+    currencywindowtext =  belrexstartDate.toLocaleDateString('en-SG')+" To "+belrexnewendate.toLocaleDateString('en-SG')
+    localStorage.setItem('belrexcurrencywindow', currencywindowtext) 
+   
+   }
+   else{
+    document.getElementById('belrexcurrencywindow').innerHTML ="Currency Window: " +localStorage.getItem('belrexcurrencywindow')
+   }
+ 
+
+}
+  else{
+    localStorage.setItem('playbutton',"false")
+    document.getElementById('lastDrivenDate').hidden = true  
+    document.getElementById('setdate').hidden = true  
+        document.getElementById('lastdrivencurrency').innerHTML = "Last Driven: Nil "
+        document.getElementById('belrexcurrencywindow').innerHTML ="Currency Window: Nil"
+        document.getElementById('lastdriven').innerHTML = "Last Driven: Nil "
+        document.getElementById("belrexcurrencylicense").innerHTML="License Valid: No <h6>(Please contact Unit Commander to unlock your account)</h6>"
+      
+      
+  }
+}else if (document.getElementById('MSS').checked){
     document.getElementById('totalkm').innerHTML = +msstotsmileage.toFixed(1)+ " KM&nbsp"
     document.getElementById('totaltrips').innerHTML = +msstotstrips+ "  Trips"
     document.getElementById('lastdriven').innerHTML = "Last Driven: "+mssmaxDate.toLocaleDateString('en-SG')
@@ -1277,6 +1410,4 @@ if(numRows[i][3] == "BELREX"){
               },
               function(err) { console.error("Execute error", err); });
   }
-
-
  
